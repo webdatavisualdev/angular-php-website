@@ -138,7 +138,7 @@ var App = angular.module('application',['ngRoute','oc.lazyLoad', 'ui.router', 'u
 .run(function($rootScope,$http,$location){
 	//$rootScope.info='loaded';
     //console.log($rootScope.info);
-    $rootScope.imageRoot = 'http://172.18.242.142/upload_files/'
+    $rootScope.imageRoot = 'http://172.18.242.142/'
     $rootScope.alert_id=0;
     $rootScope.fn={
         toDetails:function(){
