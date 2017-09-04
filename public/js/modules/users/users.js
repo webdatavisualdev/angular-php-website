@@ -8,7 +8,7 @@ angular.module('application')
             scope.selectedPassword = false;
             scope.selectedUserId = '';
             scope.users = [];
-	    scope.direct = '';
+	    scope.direct = 'bbb';
             scope.roles = [];
             scope.selectedRole = {};
             scope.updateRole = {roleid:0};
@@ -52,7 +52,7 @@ angular.module('application')
                         console.log('getUsers',res);
                         if(res.status){                                
                             scope.users = res.data;
-			    scope.direct = res.server;
+			    scope.direct = res.se;
                         }
                     }, function(){
                         console.log('error');
