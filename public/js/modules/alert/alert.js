@@ -175,9 +175,14 @@ angular.module('application')
 
 					scope.fn.getAlerts();
 					scope.fn.getFilterConfig();
+					$rootScope.current_page = 'alert';
 				}
 			};
-			scope.fn.init();
+
+			if($rootScope.authenticated)
+                scope.fn.init();
+            else
+                window.location.replace('/');			
 
 			scope.$watch('var.filter.client_partner',function(){
 				console.log('called');

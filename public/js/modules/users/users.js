@@ -48,9 +48,9 @@ angular.module('application')
                 
                 getUsers:function(){                    
                     UsersService.getUsers().then(function(res){
-                        console.log('getUsers',res);
+                        console.log(res);
                         if(res.status){                                
-                            scope.users = res.data;
+                            scope.users = res.data;                            
                         }
                     }, function(){
                         console.log('error');
@@ -160,14 +160,17 @@ angular.module('application')
                 },
 
                 init:function(){
+                    $rootScope.current_page = 'users';
                     scope.fn.getUsers();
                     scope.fn.getRoles();
 				}			
             };
+
             if($rootScope.authenticated)
-            	scope.fn.init();
-	    else
-		window.location.replace('/sac1');
+                scope.fn.init();
+            else
+                window.location.replace('/');            
+            
         }
         
 	}

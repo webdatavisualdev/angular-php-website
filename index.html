@@ -43,7 +43,7 @@
   <body class="nav-md footer_fixed" ng-app="application">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col menu_fixed" ng-if="authenticated">
+        <div class="col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
               <a href="index.html" class="site_title"><img src="public/images/aico.png" style="width:25px"> <span>SAC Solutions</span></a>
@@ -70,19 +70,19 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li ng-if="authenticated && current_user.rolename == 'Admin'">
+                  <li ng-if="authenticated && current_user.rolename == 'Admin'" class="{{current_page == 'users' ? 'current-page' : ''}}">
                       <a ui-sref="users"><img src="public/images/admin.png"><span class="sm-copy">Admin</span></a>
                   </li>
-                  <li class="{{current_page==''||current_page=='alert'||(alert_id!=0&&toDetailFrom=='alert')?'active-custom':''}}">
+                  <li class="{{current_page==''||current_page=='alert'||(alert_id!=0&&toDetailFrom=='alert')?'current-page active-custom':''}}">
                     <a ui-sref="alert" ng-click="alert_id=0"><img src="public/images/abc.png"> <span class="sm-copy">Alert</span></a>
                   </li>
-                  <li  class="{{(alert_id!=0&&toDetailFrom=='risk')||current_page=='risk'?'active-custom':''}}">
+                  <li  class="{{(alert_id!=0&&toDetailFrom=='risk')||current_page=='risk'?'current-page active-custom':''}}">
                     <a ui-sref="risk" ng-click="alert_id=0"><img src="public/images/atorch.png"> <span class="sm-copy">Risk</span></a>
                   </li>
-                  <li  class="{{alert_id==0&&current_page=='detail'?'active-custom':''}}">
+                  <li  class="{{alert_id==0&&current_page=='detail'?'current-page active-custom':''}}">
                     <a href="javascript:void(0)" ng-click="fn.toDetails()"><img src="public/images/anote.png"> <span class="sm-copy">Details</span></a>
                   </li>
-                  <li>
+                  <li class="{{current_page == 'client' ? 'current-page' : ''}}">
                     <a href=""><img src="public/images/auser.png"> <span class="sm-copy">Client</span></a>
                   </li>
                   <li>
@@ -104,7 +104,7 @@
         <div ng-class="authenticated ? 'top_nav' : ''">
           <div class="nav_menu">
             <nav>
-              <div class="nav toggle" ng-if="authenticated">
+              <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
               </div>
 
@@ -124,13 +124,13 @@
                 <li ng-if="authenticated && current_user.rolename == 'Admin'">                    
                   <a  ui-sref="users">Admin</a>
                 </li>
-                <li ng-if="authenticated">
+                <li ng-if="authenticated==true">
                   <a href="">My Profile</a>
                 </li>
-                <li ng-if="authenticated">
+                <li ng-if="authenticated==true">
                   <a href="">Search</a>
                 </li>
-                <li ng-if="authenticated">
+                <li ng-if="authenticated==true">
                   <a href="" ng-click="fn.logout()">Logout</a>
                 </li>                
                 <li ng-if="!authenticated">
@@ -142,13 +142,13 @@
                 <li>
                   <a href="https://www.sacsol.com/wp/support-2/">Support</a>
                 </li>
-                <li ng-if="authenticated">
+                <li ng-if="authenticated==true">
                   <a href="">Reports</a>
                 </li>
                 <li>
                   <a href="#/alert">Home</a>
                 </li>
-                <li ng-if="authenticated">
+                <li ng-if="authenticated==true">
                   <a href="">Welcome {{current_user.usr_username}}</a>
                 </li>
               </ul>
@@ -202,7 +202,7 @@
     <!-- Bootstrap -->
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="build/js/custom.min.js"></script>		
+    <script src="build/js/custom.js"></script>		
     <script src="public/js/app.js"></script>		
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>

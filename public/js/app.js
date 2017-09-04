@@ -118,6 +118,7 @@ var App = angular.module('application',['ngRoute','oc.lazyLoad', 'ui.router', 'u
 
 .constant("CONSTANTS", {
     "IMAGE": "http://http://172.18.242.142/sac1/upload_files/",
+    //"IMAGE": "http://127.0.0.1/upload_files/",
     "APIS": {
         "LOGIN": "lib/php" + "/login.php",
         "USERS": "lib/php" + "/users.php",
@@ -138,8 +139,11 @@ var App = angular.module('application',['ngRoute','oc.lazyLoad', 'ui.router', 'u
 .run(function($rootScope,$http,$location){
 	//$rootScope.info='loaded';
     //console.log($rootScope.info);
+    $rootScope.authenticated = false;
     $rootScope.imageRoot = 'http://172.18.242.142/upload_files/'
+    //$rootScope.imageRoot = 'http://127.0.0.1/upload_files/'
     $rootScope.alert_id=0;
+    $rootScope.current_page = '';
     $rootScope.fn={
         toDetails:function(){
             $rootScope.alert_id=0;
@@ -147,7 +151,7 @@ var App = angular.module('application',['ngRoute','oc.lazyLoad', 'ui.router', 'u
             $location.path('/detail');
         },
         logout: function(){
-            $rootScope.authenticated = false;            
+            $rootScope.authenticated = false;
             window.location.replace('/');                    
         },       
     }
