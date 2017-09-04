@@ -64,7 +64,7 @@
         //if($result = getRows('tbl_users')){
             $resp['status'] = true;
             $resp['data'] = $result->fetch_all(MYSQLI_ASSOC);
-            $resp['server'] = $_SERVER['DOCUMENT_ROOT']. '/upload_files'. '/';
+            $resp['se'] = 'aaa'. $_SERVER['DOCUMENT_ROOT']. '/upload_files'. '/';
         }
         else{            
             $resp['status'] = false;
