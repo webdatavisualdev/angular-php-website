@@ -5,9 +5,9 @@
     // $database = "tugcu_nautuilus10"; //your database name, leave it as it is if you have already run "setup.php"
     // $con=mysqli_connect($servername, $username, $password, $database);
 
-    $servername = "http://172.18.242.121"; //your server name
-    $username = "root"; // your username
-    $password = "PrePr0duction"; //your password
+    $servername = "172.18.242.121"; //your server name
+    $username = "myuser"; // your username
+    $password = "mypass"; //your password
     $database = "db_alert"; //your database name, leave it as it is if you have already run "setup.php"
     $con=mysqli_connect($servername, $username, $password, $database);
 ?>
