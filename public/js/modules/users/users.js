@@ -166,8 +166,10 @@ angular.module('application')
                     scope.fn.getRoles();
 				}			
             };
-            
-            scope.fn.init();
+            if($rootScope.authenticated)
+            	scope.fn.init();
+	    else
+		window.location.replace('/');
         }
         
 	}
