@@ -169,7 +169,7 @@ angular.module('application')
             if($rootScope.authenticated)
             	scope.fn.init();
 	    else
-		window.location.replace('/');
+		window.location.replace('/sac1');
         }
         
 	}
