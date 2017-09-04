@@ -52,7 +52,7 @@ angular.module('application')
                         console.log('getUsers',res);
                         if(res.status){                                
                             scope.users = res.data;
-			    scope.direct = res.data.server;
+			    scope.direct = res.server;
                         }
                     }, function(){
                         console.log('error');
