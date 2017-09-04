@@ -63,8 +63,7 @@
         if($result = getJoinedRows('tbl_users', 'tbl_roles', 'roleid')){
         //if($result = getRows('tbl_users')){
             $resp['status'] = true;
-            $resp['data'] = $result->fetch_all(MYSQLI_ASSOC);
-            $resp['se'] = 'aaa'. $_SERVER['DOCUMENT_ROOT']. '/upload_files'. '/';
+            $resp['data'] = $result->fetch_all(MYSQLI_ASSOC);            
         }
         else{            
             $resp['status'] = false;
