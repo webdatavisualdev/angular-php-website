@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SAC Solutions</title>
+
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+	
+    <!-- bootstrap-progressbar -->
+		<link href="vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+		<!-- JQVMap -->
+		<link href="vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+		<!-- bootstrap-daterangepicker -->
+		<link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+		<link href="bower_components/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet">
+
+		<link href="vendors/angular-datatables-angular1/dist/css/angular-datatables.css" rel="stylesheet">
+		
+		<!-- <link href="bower_components/datatables/media/css/jquery.dataTables.css" rel="stylesheet"> -->
+		
+		<link rel="stylesheet prefetch" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
+
+		<!-- Custom Theme Style -->
+		<link href="build/css/custom.min.css" rel="stylesheet">
+		<link href="build/css/mods.css" rel="stylesheet">  
+    
+  </head>
+
+  <body class="nav-md footer_fixed" ng-app="application">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col menu_fixed" ng-if="authenticated">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><img src="public/images/aico.png" style="width:25px"> <span>SAC Solutions</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="public/images/img.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>{{current_user.usr_username}}</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" ng-if="authenticated" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li ng-if="authenticated && current_user.rolename == 'Admin'">
+                      <a ui-sref="users"><img src="public/images/admin.png"><span class="sm-copy">Admin</span></a>
+                  </li>
+                  <li class="{{current_page==''||current_page=='alert'||(alert_id!=0&&toDetailFrom=='alert')?'active-custom':''}}">
+                    <a ui-sref="alert" ng-click="alert_id=0"><img src="public/images/abc.png"> <span class="sm-copy">Alert</span></a>
+                  </li>
+                  <li  class="{{(alert_id!=0&&toDetailFrom=='risk')||current_page=='risk'?'active-custom':''}}">
+                    <a ui-sref="risk" ng-click="alert_id=0"><img src="public/images/atorch.png"> <span class="sm-copy">Risk</span></a>
+                  </li>
+                  <li  class="{{alert_id==0&&current_page=='detail'?'active-custom':''}}">
+                    <a href="javascript:void(0)" ng-click="fn.toDetails()"><img src="public/images/anote.png"> <span class="sm-copy">Details</span></a>
+                  </li>
+                  <li>
+                    <a href=""><img src="public/images/auser.png"> <span class="sm-copy">Client</span></a>
+                  </li>
+                  <li>
+                    <a><i class="fa fa-television" aria-hidden="true" style="font-size:24px"></i> <span class="sm-copy">Logources</span> <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a ui-sref="alert">Overview</a></li>
+                      <li><a ui-sref="risk">Add</a></li>
+                      <li><a href="javascript:void(0)" ng-click="fn.toDetails()">Import</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div ng-class="authenticated ? 'top_nav' : ''">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle" ng-if="authenticated">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="" ng-if="authenticated">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    Language Settings
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;">Language 1</a></li>
+                    <li><a href="javascript:;">Language 2</a></li>
+                    <li><a href="javascript:;">Language 3</a></li>
+                    <li><a href="javascript:;">Language 4</a></li>
+                  </ul>
+                </li>
+                <li ng-if="authenticated && current_user.rolename == 'Admin'">                    
+                  <a  ui-sref="users">Admin</a>
+                </li>
+                <li ng-if="authenticated">
+                  <a href="">My Profile</a>
+                </li>
+                <li ng-if="authenticated">
+                  <a href="">Search</a>
+                </li>
+                <li ng-if="authenticated">
+                  <a href="" ng-click="fn.logout()">Logout</a>
+                </li>                
+                <li ng-if="!authenticated">
+                  <a ui-sref="login">Login</a>
+                </li>
+                <li ng-if="!authenticated">
+                    <a href="">Contact</a>
+                 </li>               
+                <li>
+                  <a href="https://www.sacsol.com/wp/support-2/">Support</a>
+                </li>
+                <li ng-if="authenticated">
+                  <a href="">Reports</a>
+                </li>
+                <li>
+                  <a href="#/alert">Home</a>
+                </li>
+                <li ng-if="authenticated">
+                  <a href="">Welcome {{current_user.usr_username}}</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+				<div class="right_col" role="main">
+          <div ui-view>            
+          </div>
+        </div>       
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="foo-left">
+            <ul>
+              <li>
+                <span>Copyright 2017 @ SAC Solutions Ltd</span>
+              </li>
+              <li>
+                <a href="https://www.sacsol.com/wp/contact-2/">Contact</a>
+              </li>
+              <li>
+                <a href="https://www.sacsol.com/wp/privacy-policy-terms-of-use/">Privacy Policy and terms of use</a>
+              </li>
+              <li>
+                <a href="https://www.sacsol.com/wp/sitemap/">Site Map</a>
+              </li>
+            </ul>
+          </div>
+          <div class="foo-right">
+            Caring About Your Security
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+		<script src="vendors/jquery/dist/jquery.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src="assets/js/ocLazyLoad.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="build/js/custom.min.js"></script>		
+    <script src="public/js/app.js"></script>		
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-utils/0.1.1/angular-ui-utils.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>		
+    <script src="vendors/angular-datatables-angular1/dist/angular-datatables.min.js"></script>	
+  </body>
+</html>

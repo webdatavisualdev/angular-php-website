@@ -1,0 +1,115 @@
+<div id="new-wrap">
+	<div class="nw-t1">
+		<div class="nwt1-left">
+			<h3>Multi-Calendar</h3>
+		</div>
+		<div class="nwt1-right">
+			<ul class="nwt1r-ul">
+				<li>
+					<div class="nwt1r-par">
+						Find availability
+					</div>
+				</li>
+				<li>
+					<div class="nwt1r-par">
+						<i class="fa fa-filter"></i> Filter listed: <span class="par-val">Listed</span> <i class="fa fa-caret-down"></i>
+						<div class="nwt1r-child">
+							<ul class="nwt1rc-ul">
+								<li>
+									Not listed
+								</li>
+								<li>
+									Listed
+								</li>
+							</ul>
+						</div>
+					</div>
+					
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="nw-t2">
+		<div class="nwt2-left">
+			<h2>Dec 25, 2016 - Jan 23, 2017</h2>
+		</div>
+		<div class="nwt2-right">
+			<ul class="nwt2r-ul">
+				<li>
+					<ul class="nwt2ru-wrap">
+						<li>
+							Month
+						</li>
+						<li class="active">
+							30 Days
+						</li>
+					</ul>
+				</li>
+				<li>
+					<div class="nwt2ru-tod">
+						Today
+					</div>
+				</li>
+				<li>
+					<ul class="nwt2ru-arr">
+						<li>
+							<i class="fa fa-angle-left"></i>
+						</li>
+						<li class="active">
+							<i class="fa fa-angle-right"></i>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div class="nw-t3">
+		<div class="nwt3-left">
+			<div class="nwt3l-tit">
+				Listings
+			</div>
+			<ul class="nwt3l-ul">
+				<li>
+					<span class="nwt3lu-span">
+						Some text
+					</span>
+					Some text some text some text
+				</li>
+				<li>
+					<span class="nwt3lu-span">
+						Some text
+					</span>
+					Some text some text some text
+				</li>
+			</ul>
+		</div>
+
+		<div class="nwt3-right">
+			<div class="nwt3r-tit">
+				<ul class="nwt3rt-ul">
+					<li ng-repeat="d in dates">
+						<div class="nwt3rt-day">{{d.day}}</div>
+						<div class="nwt3rt-num">{{d.date}}</div>
+					</li>
+				</ul>
+			</div>
+
+			<ul class="nwt3r-ind">
+				
+				<li ng-repeat="l in listings">
+					<div ng-repeat="s in dates"  class="nwt3riu-empty">
+					</div>
+					 <div  class="nwt3riu-pos nwt3riu-half-u nwt3riu-half-u-red"><span class="nwt3riu-copy">test test</span>
+					</div> 
+						
+				</li>
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+<div class="clearfix"></div>

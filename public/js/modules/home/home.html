@@ -1,0 +1,111 @@
+    <div class="col-md-3 left_col menu_fixed">
+        <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+                <a href="index.html" class="site_title"><img src="public/images/aico.png" style="width:25px"> <span>SAC Solutions</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+                <div class="profile_pic">
+                    <img src="public/images/img.jpg" alt="..." class="img-circle profile_img">
+                </div>
+                <div class="profile_info">
+                    <span>Welcome,</span>
+                    <h2>{{current_user.usr_username}}</h2>
+                </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                <div class="menu_section">
+                    <h3>General</h3>
+                    <ul class="nav side-menu">
+                        <li>
+                            <a><img src="public/images/abc.png"> <span class="sm-copy">Admin</span> <span class="fa fa-chevron-down"></span></a>
+                            <ul>
+                                <li><a ui-sref=".users">Users</a></li>								
+                            </ul>
+                        </li>
+                        <li><a><img src="public/images/abc.png"> <span class="sm-copy">Supplier</span> <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a ui-sref=".alert">Alert</a></li>
+                                <li><a ui-sref=".risk">Risk</a></li>
+                                <li><a href="javascript:void(0)" ng-click="fn.toDetails()">Detail</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href=""><img src="public/images/atorch.png"> <span class="sm-copy">Parts Information</span></a>
+                        </li>
+                        <li>
+                            <a href=""><img src="public/images/anote.png"> <span class="sm-copy">Purchase Order</span></a>
+                        </li>
+                        <li>
+                            <a href=""><img src="public/images/auser.png"> <span class="sm-copy">Customer</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- top navigation -->
+    <div class="top_nav">
+        <div class="nav_menu">
+            <nav>
+            <div class="nav toggle">
+                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        Language Settings
+                        <span class=" fa fa-angle-down"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                        <li><a href="javascript:;">Language 1</a></li>
+                        <li><a href="javascript:;">Language 2</a></li>
+                        <li><a href="javascript:;">Language 3</a></li>
+                        <li><a href="javascript:;">Language 4</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">My Profile</a>
+                </li>
+                <li ng-if="authenticated && current_user.rolename == 'Admin'">
+                    <a  href="#/users">Admin</a>
+                </li>
+                <li>
+                    <a href="">Search</a>
+                </li>
+                <li ng-if="authenticated">
+                    <a href="" ng-click="fn.logout()">Logout</a>
+                </li>
+                <li>
+                <a href="https://www.sacsol.com/wp/support-2/">Support</a>
+                </li>
+                <li>
+                    <a href="">Reports</a>
+                </li>
+                <li>
+                    <a href="#/alert">Home</a>
+                </li>
+                <li>
+                    <a href="">Welcome SAC Root</a>
+                </li>
+            </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- /top navigation -->
+
+    <!-- page content -->
+    <div class="right_col" role="main">
+        <div ui-view>            
+        </div>
+    </div>

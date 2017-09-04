@@ -1,0 +1,46 @@
+
+<div class="modal-header">
+        <h3 class="modal-title">Upate User Information</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="">Role</label>
+                <div class="col-sm-10">                    
+                    <select name="updateRole" class="form-control" ng-model="updateRole.roleid" 
+                            ng-options="role.roleid as role.rolename for role in roles">
+                        <option></option>
+                    </select>
+                </div>                
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="">UserName</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control"  placeholder="Input Username" ng-model="selectedUser.usr_username" required/>
+                </div>                
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="">Password</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control"  placeholder="Input Password" ng-model="selectedUser.usr_password" required/>
+                </div>                
+            </div>            
+            <div class="form-group">                
+                <label class="control-label col-sm-2" for="">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" placeholder="Input Email" ng-model="selectedUser.usr_email" required/>
+                </div>                
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="">Picture</label>
+                <div class="col-sm-10">
+                    <input type="file" accept="image/*" ng-model="updatePicFile.file" onchange="angular.element(this).scope().fn.loadImage(files)">
+                </div>
+            </div>
+        </form>            
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="fn.updateUser()">Save</button>
+        <button class="btn btn-warning" ng-click="fn.ok()">Cancel</button>
+    </div>
+    

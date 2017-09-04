@@ -1,0 +1,7 @@
+<?php
+$servername = "172.18.242.121"; //your server name
+$username = "dailymsg_nidhil"; // your username
+$password = "pass4nidhil"; //your password
+$database = "dailymsg_sac"; //your database name, leave it as it is if you have already run "setup.php"
+$con=mysqli_connect($servername, $username, $password, $database);
+?>

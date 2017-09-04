@@ -1,0 +1,42 @@
+
+<div class="panel">    
+    <div class="panel-heading border">        
+        <form class="form-inline">            
+            <button type="button" class="btn btn-success" ng-click="fn.addUser()">Add Logsource</button>
+            <button type="button" class="btn btn-success" ng-click="fn.addUser()">Import Logsource file</button>
+        </form>        
+    </div>
+    <div class="panel-body">
+
+        <table id="dt_users" class="table table-bordered bordered table-striped table-condensed datatable" ui-jq="dataTable" ui-options="dataTableOpt">
+            <thead>
+                <tr>
+                    <th>Logsourceid</th>
+                    <th>Name</th>
+                    <th>Asset type</th>
+                    <th>Asset value</th>
+                    <th>Admin contact</th>
+                    <th>Usage</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr ng-repeat="u in users">
+                    <td>{{$index+1}}</td>
+                    <td>{{u.usr_username}}</td>
+                    <td>
+                        <input ng-if="selectedPassword" type="text" value="{{u.usr_password}}" readonly>
+                        <input ng-if="!selectedPassword" type="password" value="{{u.usr_password}}" readonly>
+                    </td>
+                    <td>{{u.usr_email}}</td>
+                    <td>{{u.rolename}}</td>
+                    <td>{{u.usr_picture}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" ng-click="fn.onUpdateUser(u)">Update</button>
+                        <button type="button" class="btn btn-warning" ng-click="fn.onDeleteUser(u.userid)">Delete</button>
+                    </td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+</div>

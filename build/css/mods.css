@@ -1,0 +1,104 @@
+.risk-ind{
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	display: inline-block;
+}
+.ri-cri{
+	background: #d9534f;
+
+}
+.ri-ser{
+	background: #f0ad4e;
+
+}
+.ri-mod{
+	background: #f3af0a;
+
+}
+.ri-ins{
+	background: #337ab7;
+
+}
+.ri-und{
+	background: #5cb85c;
+
+}
+.ri-center{
+
+}
+.tb-no-border>tbody>tr>td{
+	border-top: 0px !important;
+}
+.ind-detail{
+	margin: 10px 0;
+}
+.side-menu li img{
+	width: 25px;
+}
+.sm-copy{
+	padding-left: 10px;
+	font-size: 14px !important;
+}
+footer{
+	background: #2A3F54 !important;
+	z-index: 1 !important;
+}
+.foo-left{
+	float: left;
+}
+.foo-left ul{
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none !important;
+}
+.foo-left ul li{
+	float: left;
+	margin: 0 10px;
+}
+.foo-right{
+	float: right;
+}
+.nav-sm .container.body .col-md-3.left_col{
+	z-index: 0;
+}
+.bold-grey{
+	font-weight: 700;
+}
+.mod-tb tr td{
+	color: #4285F4; 
+}
+.mod-tb tr td:first-child{
+	width: 100px;
+	color: #73879C;
+}
+
+.login-form{
+    max-width: 400px;
+	margin: auto;
+	margin-top: 200px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+    .login-form .form-title{
+        background: lightgrey;
+	}
+
+.first-top-nav{
+	margin-left: 0px;
+}
+	.first-top-nav .first-nav_menu{
+		position: absolute;
+		top: 0px;
+	}
+	
+.border-none{
+	border: none!important;    
+}
+.transparent{
+	background-color: transparent!important;
+}
+.user-picture{
+	width: 50px;
+	height: 50px;
+}
