@@ -48,7 +48,7 @@ angular.module('application')
                 
                 getUsers:function(){                    
                     UsersService.getUsers().then(function(res){
-                        console.log(res);
+                        console.log('getUsers',res);
                         if(res.status){                                
                             scope.users = res.data;                            
                         }
