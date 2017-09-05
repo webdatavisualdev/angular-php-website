@@ -68,7 +68,7 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" ng-if="authenticated" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>General</h3>
+                <h3>General{{current_page}}</h3>
                 <ul class="nav side-menu">
                   <li ng-if="authenticated && current_user.rolename == 'Admin'" class="{{current_page == 'users' ? 'current-page' : ''}}">
                       <a ui-sref="users"><img src="public/images/admin.png"><span class="sm-copy">Admin</span></a>
@@ -81,12 +81,12 @@
                   </li>
                   <li  class="{{alert_id==0&&current_page=='detail'?'current-page active-custom':''}}">
                     <a href="javascript:void(0)" ng-click="fn.toDetails()"><img src="public/images/anote.png"> <span class="sm-copy">Details</span></a>
-                  </li>
-                  <li class="{{current_page == 'client' ? 'current-page' : ''}}">
-                    <a href=""><img src="public/images/auser.png"> <span class="sm-copy">Client</span></a>
+                  </li>                 
+                  <li>
+                      <a><img src="public/images/auser.png"> <span class="sm-copy">Client</span></a>
                   </li>
                   <li>
-                    <a><i class="fa fa-television" aria-hidden="true" style="font-size:24px"></i> <span class="sm-copy">Logources</span> <span class="fa fa-chevron-down"></span></a>
+                    <a ui-sref="logsources"><i class="fa fa-television" aria-hidden="true" style="font-size:24px"></i> <span class="sm-copy">Logsources</span> <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a ui-sref="alert">Overview</a></li>
                       <li><a ui-sref="risk">Add</a></li>
