@@ -131,6 +131,7 @@ function getDetails(){
 	}
 	echo json_encode($resp);
 }
+
 function updateStatus(){
 
 	$post=$_POST['updateStatus'];

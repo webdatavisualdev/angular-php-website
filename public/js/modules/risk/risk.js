@@ -15,11 +15,19 @@ angular.module('application')
 						scope.fn.resetFilters();
 					});
 				},
-				getClientPartner:function(){
+				getClientPartner:function(){					
 					if(scope.var.filter.client_partner=='all'){
 						return [];
 					}else if(scope.var.filter.client_partner=='client'){
-						return scope.var.client_partner.clients;
+						if($rootScope.current_user.rolename != 'Client'){
+							return scope.var.client_partner.clients;
+						}
+						else{
+							return scope.var.client_partner.clients.filter(function(client){						
+								if(client==$rootScope.current_user.clientid)
+									return client;
+							});
+						}						
 					}else{
 						return scope.var.client_partner.partners;
 					}

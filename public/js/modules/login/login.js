@@ -1,14 +1,14 @@
 // , $uibModal
 angular.module('application')
-.directive('loginModule',function($http,$rootScope,$location,$uibModal){
+.directive('loginModule',function($http,$rootScope,$location,$uibModal, $state){
 	return {
 		restrict:'E',
 		templateUrl:'public/js/modules/login/login.html',
 		link:function(scope,elem,attr){			
             scope.server = 'lib/php/login.php';
-            scope.username = 'User 1 fist name last name';
-            scope.password = 'password';
-            scope.alert = '! Information you have entered dose not exit in the system, kindly contact SAV Support, using the "forgot my pasword link below';
+            scope.username = '';
+            scope.password = '';
+            scope.alert = '! Information you have entered dose not exit in the system, kindly contact SAV Support, using the "forgot my pasword link below"';
             
 			scope.fn={
 				login:function(){
@@ -30,7 +30,7 @@ angular.module('application')
                                 scope.fn.gotoHome();
                             }
                             else{
-                                scope.fn.modalPopupTrigger();    
+                                scope.fn.modalPopup();   
                             }
                         }).
                         error(function(){
@@ -40,7 +40,7 @@ angular.module('application')
                     );
                 },                
                 gotoHome: function(){
-                    $location.path('/detail');
+                    $state.go('alert');                    
                 },
                 
                 modalPopup: function() {
@@ -50,17 +50,7 @@ angular.module('application')
                     });            
                     scope.modalInstance = modal;            
                     return modal.result;
-                },
-
-                modalPopupTrigger: function() {
-                    scope.fn.modalPopup()
-                        .then(function(data) {
-                            scope.fn.handleSuccess(data);
-                        })
-                        .then(null, function(reason) {
-                            scope.fn.handleDismiss(reason);
-                        });
-                    },
+                },              
             
                 ok: function() {
                     scope.modalInstance.close();

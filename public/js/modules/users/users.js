@@ -5,7 +5,7 @@ angular.module('application')
 		templateUrl:'public/js/modules/users/users.html',
 		link:function(scope,elem,attr){
             scope.picFile = null;            
-            scope.selectedPassword = false;
+            scope.selectedPassword = -1;
             scope.selectedUserId = '';
             scope.users = [];
             scope.roles = [];
@@ -22,8 +22,14 @@ angular.module('application')
             scope.selectedUser = {};
             scope.alert = 'Do you want to delete this user?';            
             scope.root = $rootScope.imageRoot;
-            
-            scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers');
+            scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(2);
+            // scope.dtOptions = DTOptionsBuilder
+            //     .newOptions()                             
+            //     .withOption('order', [1, 'asc'])
+            //     .withOption('lengthMenu', [10, 25, 50, 100, 250, 500])                
+            //     .withPaginationType('full_numbers')
+            //     .withDOM('pitrfl');
+
             scope.dtColumnDefs = [
                 DTColumnDefBuilder.newColumnDef(0),
                 DTColumnDefBuilder.newColumnDef(1),
@@ -36,10 +42,10 @@ angular.module('application')
 
 			scope.fn={
                 getRoles:function(){
-                    RoleService.getRoles().then(function(res){
-                        console.log(res);
+                    RoleService.getRoles().then(function(res){                        
                         if(res.status){
                             scope.roles = res.data;
+                            console.log($('.input-sm').length);
                         }                        
                     }, function(){
                         console.log('error');
@@ -47,8 +53,7 @@ angular.module('application')
                 },
                 
                 getUsers:function(){                    
-                    UsersService.getUsers().then(function(res){
-                        console.log(res);
+                    UsersService.getUsers().then(function(res){                        
                         if(res.status){                                
                             scope.users = res.data;                            
                         }
@@ -62,8 +67,7 @@ angular.module('application')
                     if(scope.picFile)
                         scope.newUser.usr_picture = scope.picFile.name;
                     
-                    UsersService.addUser(scope.newUser, scope.picFile).then(function(res){
-                        console.log(res);
+                    UsersService.addUser(scope.newUser, scope.picFile).then(function(res){                        
                         if(res.data.status){
                             scope.users.push(res.data.data);
                         }                        
@@ -86,8 +90,7 @@ angular.module('application')
                         usr_picture: scope.picFile ? scope.picFile.name : scope.selectedUser.usr_picture
                     };                   
 
-                    UsersService.updateUser(updateData, scope.picFile, scope.selectedUser.userid).then(function(res){
-                        console.log(res);
+                    UsersService.updateUser(updateData, scope.picFile, scope.selectedUser.userid).then(function(res){                        
                         if(res.data.status){
                             
                         }                        
@@ -142,13 +145,17 @@ angular.module('application')
                     return modal.result
                 },
 
-                loadImage: function(file){
-                    console.log(file);
+                loadImage: function(file){                    
                     scope.picFile = file[0];                    
                 },               
 
-                onViewPassword: function(){
-                    scope.selectedPassword = !scope.selectedPassword;
+                onViewPassword: function(no){
+                    if(scope.selectedPassword == no){
+                        scope.selectedPassword = -1;
+                    }
+                    else{
+                        scope.selectedPassword = no;
+                    }                    
                 },
 
                 ok: function() {

@@ -1,0 +1,149 @@
+<div class="row">
+    <div class="col-md-1">
+        <div class="form-group">
+        <label>Asset type</label>
+        <select class="form-control" ng-model="logData.platid">            
+            <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
+        </select>
+        </div>
+    </div>
+    <div class="col-md-1">
+        <div class="form-group">
+        <label>Country</label>
+        <select class="form-control" ng-model="logData.ls_country">
+            <option>All</option>
+            <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
+        </select>
+        </div>
+    </div>
+    <div class="col-md-1">
+        <div class="form-group">
+            <label>Asset Value</label>            
+            <select class="form-control" ng-model="logData.ls_priority">
+                <option>All</option>
+                <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-1">
+        <div class="form-group">
+            <label>Location</label>
+            <select class="form-control" ng-model="logData.ls_location">
+                <option>All</option>
+                <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
+            </select>
+        </div>
+    </div>    
+    <div class="col-md-1">
+        <div class="form-group">
+            <label>ITadn</label>
+            <select class="form-control" ng-model="logData.ls_itownid">
+                <option>All</option>
+                <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
+            </select>
+        </div>
+    </div>    
+    <div class="col-md-1">
+        <div class="form-group">
+            <label>Impact</label>
+            <select class="form-control" ng-model="logData.ls_bussinessimpact">
+                <option>All</option>
+                <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
+            </select>
+        </div>
+    </div>    
+    <div class="col-md-2">
+        <div class="form-group">            
+            <div class="form-inline">
+                <label>NTP version</label>
+                <select class="form-control" ng-model="logData.ls_ntpversion">
+                    <option>All</option>
+                    <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
+                </select>
+            </div>            
+            <div class="form-inline">
+                <label>Source</label>
+                <select class="form-control" ng-model="logData.ls_source">
+                    <option>All</option>
+                    <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
+                </select>
+            </div>
+        </div>        
+    </div>    
+    <div class="col-md-2">
+        <div class="form-group">            
+            <div class="form-inline">
+                <label>Log Type</label>
+                <select class="form-control" ng-model="logData.ls_logsformat">
+                    <option>All</option>
+                    <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
+                </select>
+            </div>            
+            <div class="form-inline">
+                <label>Protocol</label>
+                <select class="form-control" ng-model="logData.ls_logprotocol">
+                    <option>All</option>
+                    <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
+                </select>
+            </div>
+            <div class="form-inline">
+                <label>Port</label>
+                <select class="form-control" ng-model="logData.ls_logprort">
+                    <option>All</option>
+                    <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
+                </select>
+            </div>
+        </div>        
+    </div>    
+</div>
+<div class="row">
+    <div>
+        <div class="form-group">
+            <div class="form-inline">
+                <label>System name</label>
+                <input type="text" class="form-control" ng-model="logData.ls_systemname">                    
+            </div>
+            <div class="form-inline">
+                <label>Usage</label>
+                <input type="text" class="form-control" ng-model="logData.ls_usage">                    
+            </div>
+        </div>
+        <div class="form-group">
+
+        </div>
+        <div class="form-group">
+            <label>SOC Status</label>
+
+        </div>
+    </div>    
+    <div>
+        <div class="form-group">
+            <div class="form-inline">
+                <label>FQDN name</label>
+                <input type="text" class="form-control" ng-model="logData.ls_fqdn">                    
+            </div>
+            <div class="form-inline">
+                <label>MAC</label>
+                <input type="text" class="form-control" ng-model="logData.ls_mac">                    
+            </div>
+            <div class="form-inline">
+                <label>Information in system</label>
+                <input type="text" class="form-control" ng-model="logData.ls_storedinformation">
+            </div>
+            <div class="form-inline">
+                <label>Model</label>
+                <input type="text" class="form-control">                    
+            </div>
+            <div class="form-inline">
+                <label>Comment</label>
+                <textarea class="form-control" ng-model="logData.ls_comment">
+                </textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-offset">
+        <button type="button" class="btn btn-success" ng-click="fn.onSave()">Save</button>            
+    </div>
+</div>

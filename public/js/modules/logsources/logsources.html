@@ -1,0 +1,44 @@
+<div class="panel">    
+    <div class="panel-heading border">        
+        <form class="form-inline">            
+            <button type="button" class="btn btn-success" ng-click="fn.onAdd()">Add Logsource</button>
+            <button type="button" class="btn btn-success" ng-click="fn.onImportLog()">Import Logsource file</button>
+            <a>FAQ</a>
+        </form>        
+    </div>
+    <div class="panel-body">
+        <div>
+            <div><h3>Logsources</h3></div>
+            <div>
+
+            </div>            
+        </div>
+        <table id="dt_users" class="table table-bordered bordered table-striped table-condensed datatable" ui-jq="dataTable" ui-options="dataTableOpt">
+            <thead>
+                <tr>
+                    <th>Logsourceid</th>
+                    <th>Name</th>
+                    <th>Asset type</th>
+                    <th>Asset value</th>
+                    <th>Admin contact</th>
+                    <th>Usage</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="log in logs">
+                    <td>{{log.logsourceid}}</td>
+                    <td>{{log.ls_systemname}}</td>
+                    <td>{{log.pl_name}}</td>                    
+                    <td>{{log.ls_priority}}</td>
+                    <td>{{log.ls_itownid}}</td>
+                    <td>{{log.ls_usage}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" ng-click="fn.onUpdateLog(log)">Update</button>
+                        <button type="button" class="btn btn-warning" ng-click="fn.onDeleteLog(log.logsourceid)">Details</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

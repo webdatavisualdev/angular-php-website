@@ -15,7 +15,7 @@ angular.module('application')
 						scope.var.asset_type=v.asset_type;
 						scope.var.alert_no=v.alert_no;
 						scope.var.alert_name=v.alert_name;
-						scope.var.logsourceid=v.logsourceid;
+						scope.var.logsourceid=v.logsourceid;						
 						scope.fn.resetFilters();
 					});
 				},
@@ -39,8 +39,9 @@ angular.module('application')
 						asset_value:'All',
 						categories:'All',
 						risk_level:'All',
-						logsourceid:'All',
+						logsourceid: $rootScope.current_user.rolename != 'Client' ? 'All' : scope.var.logsourceid[0],
 					};
+					console.log('filter',scope.var.filter);
 					scope.var.page={
 						page_no:'1',
 						page_size:'10'

@@ -28,7 +28,31 @@ var App = angular.module('application',['ngRoute','oc.lazyLoad', 'ui.router', 'u
                     'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js','assets/js/moment.js'                    
                 ],
 				cache:true
-			},
+            },
+            {
+				name: 'logsources',
+				files: [
+                    'public/js/modules/logsources/logsources.js',
+                    'public/js/services/logsources.service.js',
+                    'public/js/services/asset.service.js',
+                    {type:'css',path:'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css'},
+                    {type:'css',path:'build/css/mods.css'},
+                    'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js','assets/js/moment.js'                    
+                ],
+				cache:true
+            },
+            {
+				name: 'editlogsource',
+				files: [
+                    'public/js/modules/logsources/editlogsource.js',
+                    'public/js/services/logsources.service.js',
+                    'public/js/services/asset.service.js',
+                    {type:'css',path:'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css'},
+                    {type:'css',path:'build/css/mods.css'},
+                    'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js','assets/js/moment.js'                    
+                ],
+				cache:true
+            },            
 			{
 				name: 'alert',
 				files: ['public/js/modules/alert/alert.js?id=1',{type:'css',path:'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css'},'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js','assets/js/moment.js'],
@@ -86,6 +110,24 @@ var App = angular.module('application',['ngRoute','oc.lazyLoad', 'ui.router', 'u
                 }]
             }
         })
+        .state('logsources', {
+            url: '/logsources',
+            template:'<logsources-module></logsources-module>',
+            resolve:{
+                lazy:['$ocLazyLoad',function($ocLazyLoad){
+                    return $ocLazyLoad.load('logsources');
+                }]
+            }
+        })
+        .state('editlogsource', {
+            url: '/editlogsource',
+            template:'<editlogsource-module></editlogsource-module>',
+            resolve:{
+                lazy:['$ocLazyLoad',function($ocLazyLoad){
+                    return $ocLazyLoad.load('editlogsource');
+                }]
+            }
+        })        
         .state('alert', {
             url: '/alert',
             template:'<alert-module></alert-module>',
@@ -118,11 +160,12 @@ var App = angular.module('application',['ngRoute','oc.lazyLoad', 'ui.router', 'u
 
 .constant("CONSTANTS", {
     "IMAGE": "http://http://172.18.242.142/sac1/upload_files/",
-    //"IMAGE": "http://127.0.0.1/upload_files/",
     "APIS": {
         "LOGIN": "lib/php" + "/login.php",
         "USERS": "lib/php" + "/users.php",
         "ROLES": "lib/php" + "/roles.php",
+        "LOGS":  "lib/php" + "/logsources.php",
+        "ASSET": 'lib/php' + "/asset.php"
     },
     "HEADER": {
         'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
@@ -136,9 +179,7 @@ var App = angular.module('application',['ngRoute','oc.lazyLoad', 'ui.router', 'u
     }
 })
 
-.run(function($rootScope,$http,$location){
-	//$rootScope.info='loaded';
-    //console.log($rootScope.info);
+.run(function($rootScope,$http,$location){	
     $rootScope.authenticated = false;
     $rootScope.imageRoot = 'http://172.18.242.142/upload_files/'
     //$rootScope.imageRoot = 'http://127.0.0.1/upload_files/'

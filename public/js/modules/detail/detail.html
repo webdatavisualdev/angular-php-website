@@ -68,13 +68,13 @@
               <div class="form-group">
                 <label>Logsourceid</label>
                 <select class="form-control" ng-model="var.filter.logsourceid">
-                  <option>All</option>
+                  <option ng-if="current_user.rolename != 'Client'">All</option>
                   <option ng-repeat="l in var.logsourceid">{{l}}</option>
                 </select>
               </div>
             </div>
             <div class="col-md-1">
-              <div class="form-group">
+              <div class="form-group" ng-if="current_user.rolename != 'Client'">
                 <div>
                   <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="all"> All
                 </div>
@@ -90,13 +90,13 @@
                 </select>
               </div>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-1" ng-if="current_user.rolename != 'Client'">
               <label>Page</label>
               <select class="form-control" ng-model="var.page.page_no">
                 <option ng-repeat="p in fn.int2Array(1,fn.getTotalPage())">{{p}}</option>
               </select>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-1" ng-if="current_user.rolename != 'Client'">
               <label>Page Size</label>
                <select class="form-control" ng-model="var.page.page_size" ng-change="var.page.page_no='1'">
                 <option>10</option>
@@ -104,7 +104,7 @@
                 <option>30</option>
               </select>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-1" ng-if="current_user.rolename != 'Client'">
               <label>Action</label>
               <button class="btn btn-success" ng-click="fn.resetFilters()">Reset All</button>
             </div> 

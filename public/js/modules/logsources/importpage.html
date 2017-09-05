@@ -1,0 +1,17 @@
+<div class="panel">    
+        <div class="panel-heading border">        
+            <div><h3>Import Logsourcecs</h3></div>         
+        </div>
+        <div class="panel-body">            
+            <form class="form-inline">            
+                <button type="button" class="btn btn-success" ng-click="fn.onDownloadTemplate()">Download Template</button>
+                <button type="button" class="btn btn-success" ng-click="fn.onDownloadSample()">Download Sample</button>
+                <button type="button" class="btn btn-success" ng-click="fn.onDownloadGuid()">Download Guide</button>                
+            </form>
+            <form class="form-inline">            
+                <input type="file btn btn-success" accept="image/*" ng-model="picFile" onchange="angular.element(this).scope().fn.loadImage(files)">
+                <button type="button" class="btn btn-success" ng-click="fn.onUploadFile()">Upload file</button>
+                <button type="button" class="btn btn-success" ng-click="fn.onImpor()">Import</button>
+            </form>
+        </div>
+    </div>

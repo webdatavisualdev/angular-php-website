@@ -38,13 +38,13 @@
             </div>
             <div class="col-md-2">
               <div class="form-group">
-                <div>
+                <div  ng-if="current_user.rolename != 'Client'">
                   <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="all"> All
                 </div>
-                <div>
+                <div  ng-if="current_user.rolename != 'Client'">
                   <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="client"> Client
                 </div>
-                <div>
+                <div  ng-if="current_user.rolename != 'Client'">
                   <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="partner"> Partnerid
                 </div>
                 <br>

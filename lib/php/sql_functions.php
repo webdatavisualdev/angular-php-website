@@ -102,8 +102,9 @@ function deleteRow($table,$cond='1=1')
 	if($con->query($sql)) return true; else return false;
 }
 
-function getJoinedRows($left,$right,$col,$cond='1=1',$type='INNER',$groupby=0,$sort=0)
+function getJoinedRows($left,$right,$col,$cond='1=1',$type='INNER',$groupby=0,$sort=0,$dBNum=1)
 {	global $con;
+	global $con2;
 	if(!isset($left)||!isset($right)||!isset($col))
 	{
 		return false;
@@ -126,12 +127,14 @@ function getJoinedRows($left,$right,$col,$cond='1=1',$type='INNER',$groupby=0,$s
 		}
 		else $sql.=" ASC";
 	}
-	$res=$con->query($sql);
-	//echo $sql;
+	if($dBNum==1)
+		$res=$con->query($sql);
+	else
+		$res=$con2->query($sql);
+	
 	if($res->num_rows>0)
-	return $res;	
+		return $res;	
 	else return false;
-
 }
 
 function doQuery($sql)
