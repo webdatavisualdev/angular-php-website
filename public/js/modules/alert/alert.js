@@ -204,7 +204,7 @@ angular.module('application')
 				var val=this.value;
 				var d=new Date(val);
 				scope.$apply(function(){
-					console.log('applied');
+					// console.log('applied');
 					if($('.date-picker-to:eq(0)').val()!=''){
 						if($('.date-picker-to:eq(0)').val()<val){
 							$('.date-picker-to:eq(0)').val(val);

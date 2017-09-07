@@ -1,17 +1,34 @@
 <div class="panel">    
-        <div class="panel-heading border">        
-            <div><h3>Import Logsourcecs</h3></div>         
-        </div>
-        <div class="panel-body">            
-            <form class="form-inline">            
-                <button type="button" class="btn btn-success" ng-click="fn.onDownloadTemplate()">Download Template</button>
-                <button type="button" class="btn btn-success" ng-click="fn.onDownloadSample()">Download Sample</button>
-                <button type="button" class="btn btn-success" ng-click="fn.onDownloadGuid()">Download Guide</button>                
-            </form>
-            <form class="form-inline">            
-                <input type="file btn btn-success" accept="image/*" ng-model="picFile" onchange="angular.element(this).scope().fn.loadImage(files)">
-                <button type="button" class="btn btn-success" ng-click="fn.onUploadFile()">Upload file</button>
-                <button type="button" class="btn btn-success" ng-click="fn.onImpor()">Import</button>
-            </form>
-        </div>
+    <div class="panel-heading border">        
+        <div><h3>Import Logsourcecs</h3></div>         
     </div>
+    <div class="panel-body">
+        <form>
+            <div class="row padding-tb">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success form-control" ng-click="fn.onDownloadTemplate()">Download Template</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success form-control" ng-click="fn.onDownloadSample()">Download Sample</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success form-control" ng-click="fn.onDownloadGuid()">Download Guide</button>            
+                </div>
+            </div>
+            <div class="row padding-tb">
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-success form-control" ng-click="fn.onUploadFile()">Browser for file</button>            
+                </div>
+                <div class="col-md-2">
+                    <input type="file btn btn-success form-control" accept="image/*" ng-model="picFile" onchange="angular.element(this).scope().fn.loadImage(files)">
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success form-control" ng-click="fn.onUploadFile()">Upload file</button>            
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-success form-control" ng-click="fn.onImport()">Import</button>            
+                </div>
+            </div>
+        </form>            
+    </div>
+</div>

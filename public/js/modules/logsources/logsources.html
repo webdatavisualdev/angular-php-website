@@ -13,7 +13,7 @@
 
             </div>            
         </div>
-        <table id="dt_users" class="table table-bordered bordered table-striped table-condensed datatable" ui-jq="dataTable" ui-options="dataTableOpt">
+        <table id="dt_logs" class="table table-bordered bordered table-striped table-condensed datatable" datatable="ng" ui-jq="dataTable" ui-options="dataTableOpt">
             <thead>
                 <tr>
                     <th>Logsourceid</th>
@@ -31,11 +31,11 @@
                     <td>{{log.ls_systemname}}</td>
                     <td>{{log.pl_name}}</td>                    
                     <td>{{log.ls_priority}}</td>
-                    <td>{{log.ls_itownid}}</td>
+                    <td>{{fn.getUser(log.ls_itownid)}}</td>
                     <td>{{log.ls_usage}}</td>
                     <td>
-                        <button type="button" class="btn btn-primary" ng-click="fn.onUpdateLog(log)">Update</button>
-                        <button type="button" class="btn btn-warning" ng-click="fn.onDeleteLog(log.logsourceid)">Details</button>
+                        <button type="button" class="btn btn-primary" ng-click="fn.onUpdate(log)">Update</button>
+                        <button type="button" class="btn btn-warning" ng-click="fn.onDetail(log)">Details</button>
                     </td>
                 </tr>
             </tbody>

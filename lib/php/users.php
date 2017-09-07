@@ -59,7 +59,8 @@
         return false;
     }
 
-    function getUsers() {           
+    function getUsers() {
+        //$sql="SELECT tbl_users.*, tbl_roles.rolename, tbl_clients.cl_name FROM tbl_users LEFT JOIN tbl_roles ON tbl_users.roleid = tbl_roles.roleid LEFT JOIN tbl_clients ON tbl_users.clientid = tbl_clients.clientid WHERE tbl_users.userid=".$uid;
         if($result = getJoinedRows('tbl_users', 'tbl_roles', 'roleid')){
         //if($result = getRows('tbl_users')){
             $resp['status'] = true;

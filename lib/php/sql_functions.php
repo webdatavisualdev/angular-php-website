@@ -1,9 +1,10 @@
 <?php
 include('config.php');
 error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
-function getRows($table,$cond='1=1',$groupby=0,$sort=0)
+function getRows($table,$cond='1=1',$groupby=0,$sort=0,$dbNum=0)
 {
 	global $con;
+	global $con2;
 	if(!isset($cond))
 	{
 		$cond="1=1";
@@ -17,20 +18,33 @@ function getRows($table,$cond='1=1',$groupby=0,$sort=0)
 			$sql.=" ".$sort;
 		}
 		else $sql.=" ASC";
-	}		
-	//echo $sql;
-	$res=$con->query($sql);
+	}
+	
+	if($dbNum==0)
+		$res=$con->query($sql);
+	else
+		$res=$con2->query($sql);
+
 	if($res->num_rows>0)
-	return $res;	
-	else return false;
+		return $res;
+	else return $sql;
 }
 
-function insertRow($table,$jvals)
+function insertRow($table,$jvals,$dbNum=1)
 {	
-	global $con;	
+	global $con;
+	global $con2;
+	
 	$vals=json_decode($jvals,true);	
-	$col="";$val="";
+	
+	$connect = $con;
+
+	$col="";
+	
+	$val="";
+	
 	$i=0;
+
 	if (!is_array($vals))
 	{
 		return false;
@@ -49,11 +63,15 @@ function insertRow($table,$jvals)
 		}
 		$i++;
 	}	
+	
+	$sql="INSERT INTO ".$table."(".$col.") VALUES(".$val.");";
 
-	$sql="INSERT INTO ".$table."(".$col.") VALUES(".$val.");";	
-	if($con->query($sql)){
-		if($con->insert_id!=0){
-			return $con->insert_id;
+	if($dbNum==2)		
+		$connect == $con2;
+
+	if($connect->query($sql)){
+		if($connect->insert_id!=0){
+			return $connect->insert_id;
 		}else{
 		 	return true;
 		}
@@ -62,18 +80,26 @@ function insertRow($table,$jvals)
 	}
 }
 
-function updateRow($table,$jvals,$cond='1=1')
+function updateRow($table,$jvals,$cond='1=1',$dbNum=1)
 {
 	global $con;
+	global $con2;
+
+	$connect=$con;
+
+	if($dbNum==2)		
+		$connect=$con2;
+
 	$vals=json_decode($jvals,true);
 	$set="";
 	$i=0;
+	
 	if (!is_array($vals))
 	{	echo "not array";
 		return false;
 	}
 	if(!getRows($table,$cond)){
-		return insertRow($table,$jvals);
+		return insertRow($table,$jvals,$dbNum);
 	}else{
 		foreach($vals as $x=>$value)
 		{
@@ -90,21 +116,29 @@ function updateRow($table,$jvals,$cond='1=1')
 			$i++;
 		}	
 		$sql="UPDATE ".$table." SET ".$set." WHERE ".$cond.";";	
-		if($con->query($sql)) return true; else return false;
+		if($connect->query($sql)) return true; else return $sql;
 	}	
 }
 
-function deleteRow($table,$cond='1=1')
+function deleteRow($table,$cond='1=1',$dbNum=1)
 {
-	global $con;	
+	global $con;
+	global $con2;
+
+	$connect=$con;
+
+	if($dbNum==2)		
+		$connect=$con2;
+
 	$sql="DELETE FROM ".$table." WHERE ".$cond.";";	
 
-	if($con->query($sql)) return true; else return false;
+	if($connect->query($sql)) return true; else return false;
 }
 
-function getJoinedRows($left,$right,$col,$cond='1=1',$type='INNER',$groupby=0,$sort=0,$dBNum=1)
+function getJoinedRows($left,$right,$col,$cond='1=1',$type='INNER',$groupby=0,$sort=0,$dbNum=1)
 {	global $con;
 	global $con2;
+
 	if(!isset($left)||!isset($right)||!isset($col))
 	{
 		return false;
@@ -127,7 +161,7 @@ function getJoinedRows($left,$right,$col,$cond='1=1',$type='INNER',$groupby=0,$s
 		}
 		else $sql.=" ASC";
 	}
-	if($dBNum==1)
+	if($dbNum==1)
 		$res=$con->query($sql);
 	else
 		$res=$con2->query($sql);
@@ -137,10 +171,17 @@ function getJoinedRows($left,$right,$col,$cond='1=1',$type='INNER',$groupby=0,$s
 	else return false;
 }
 
-function doQuery($sql)
+function doQuery($sql, $dbNum=1)
 {
 	global $con;
-	if($res=$con->query($sql)) 
+	global $con2;
+
+	$connect=$con;
+	
+	if($dbNum==2)		
+		$connect=$con2;
+
+	if($res=$connect->query($sql)) 
 	{
 		if($res->num_rows>0)
 			return $res;	

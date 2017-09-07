@@ -1,149 +1,236 @@
-<div class="row">
-    <div class="col-md-1">
-        <div class="form-group">
-        <label>Asset type</label>
-        <select class="form-control" ng-model="logData.platid">            
-            <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
-        </select>
-        </div>
+<div class="panel">    
+    <div class="panel-heading border">
+        <div><h4>Add Logsource:</h4></div>
     </div>
-    <div class="col-md-1">
-        <div class="form-group">
-        <label>Country</label>
-        <select class="form-control" ng-model="logData.ls_country">
-            <option>All</option>
-            <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
-        </select>
-        </div>
-    </div>
-    <div class="col-md-1">
-        <div class="form-group">
-            <label>Asset Value</label>            
-            <select class="form-control" ng-model="logData.ls_priority">
-                <option>All</option>
-                <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
-            </select>
-        </div>
-    </div>
-    <div class="col-md-1">
-        <div class="form-group">
-            <label>Location</label>
-            <select class="form-control" ng-model="logData.ls_location">
-                <option>All</option>
-                <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
-            </select>
-        </div>
-    </div>    
-    <div class="col-md-1">
-        <div class="form-group">
-            <label>ITadn</label>
-            <select class="form-control" ng-model="logData.ls_itownid">
-                <option>All</option>
-                <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
-            </select>
-        </div>
-    </div>    
-    <div class="col-md-1">
-        <div class="form-group">
-            <label>Impact</label>
-            <select class="form-control" ng-model="logData.ls_bussinessimpact">
-                <option>All</option>
-                <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
-            </select>
-        </div>
-    </div>    
-    <div class="col-md-2">
-        <div class="form-group">            
-            <div class="form-inline">
-                <label>NTP version</label>
-                <select class="form-control" ng-model="logData.ls_ntpversion">
-                    <option>All</option>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-1">
+                <div class="form-group">
+                <label>Asset type</label>
+                <select class="form-control" ng-model="logData.platid">            
                     <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
                 </select>
-            </div>            
-            <div class="form-inline">
-                <label>Source</label>
-                <select class="form-control" ng-model="logData.ls_source">
-                    <option>All</option>
-                    <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
-                </select>
+                </div>
             </div>
-        </div>        
-    </div>    
-    <div class="col-md-2">
-        <div class="form-group">            
-            <div class="form-inline">
-                <label>Log Type</label>
-                <select class="form-control" ng-model="logData.ls_logsformat">
-                    <option>All</option>
-                    <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
+            <div class="col-md-1">
+                <div class="form-group">
+                <label>Country</label>
+                <select class="form-control" ng-model="logData.ls_country">                    
+                    <option ng-repeat="country in filterConf.countries" value="{{country.Code}}">{{country.Name}}</option>
                 </select>
-            </div>            
-            <div class="form-inline">
-                <label>Protocol</label>
-                <select class="form-control" ng-model="logData.ls_logprotocol">
-                    <option>All</option>
-                    <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
-                </select>
+                </div>
             </div>
-            <div class="form-inline">
-                <label>Port</label>
-                <select class="form-control" ng-model="logData.ls_logprort">
-                    <option>All</option>
-                    <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
-                </select>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label>Asset Value</label>            
+                    <select class="form-control" ng-model="logData.ls_priority">                        
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
             </div>
-        </div>        
-    </div>    
-</div>
-<div class="row">
-    <div>
-        <div class="form-group">
-            <div class="form-inline">
-                <label>System name</label>
-                <input type="text" class="form-control" ng-model="logData.ls_systemname">                    
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label>Location</label>
+                    <select class="form-control" ng-model="logData.ls_location">                       
+                        <option ng-repeat="location in filterConf.locations" value="{{location.locationid}}">{{location.Name}}</option>
+                    </select>
+                </div>
+            </div>    
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label>ITadn</label>
+                    <select class="form-control" ng-model="logData.ls_itownid">                        
+                        <option ng-repeat="user in filterConf.users" value="{{user.userid}}">{{user.usr_username}}</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-inline">
-                <label>Usage</label>
-                <input type="text" class="form-control" ng-model="logData.ls_usage">                    
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label>Escalation</label>
+                    <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label>Impact</label>
+                    <select class="form-control" ng-model="logData.ls_businessimpact">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>                        
+                    </select>
+                </div>
+            </div>    
+            <div class="col-md-2">
+                <div class="form-group">                    
+                    <div class="row padding-tb">
+                        <div class="col-md-5">
+                            <label>NTP version</label>
+                        </div>
+                        <div class="col-md-7">
+                            <select class="form-control">
+                                <option>v1</option>
+                                <option>v2</option>
+                                <option>v3</option>
+                            </select>
+                        </div>                        
+                    </div>         
+                    <div class="row padding-tb">
+                        <div class="col-md-5">
+                            <label>Source</label>
+                        </div>
+                        <div class="col-md-7">
+                            <select class="form-control">                                
+                            </select>
+                        </div>                        
+                    </div>
+                </div>        
+            </div>    
+            <div class="offset-md-1 col-md-2">
+                <div class="form-group">
+                    <div class="row padding-tb">
+                        <div class="col-md-4">
+                            <label>Log Type</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-control" ng-model="logData.ls_logsformat">
+                                <option>syslog</option>
+                                <option>nxlog</option>
+                                <option>filebeat</option>
+                                <option>ossec</option>                                
+                            </select>
+                        </div>                        
+                    </div>
+                    <div class="row padding-tb">
+                        <div class="col-md-4">
+                            <label>Protocol</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-control" ng-model="logData.ls_logprotocol">
+                                <option>TCP</option>
+                                <option>UDP</option>                                
+                            </select>
+                        </div>                        
+                    </div>
+                    <div class="row padding-tb">
+                        <div class="col-md-4">
+                            <label>Port</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-control" ng-model="logData.ls_logprort">
+                                <option>515</option>
+                                <option>1514</option>
+                                <option>5000</option>
+                            </select>
+                        </div>
+                    </div>                    
+                </div>        
+            </div>    
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="row padding-tb">
+                        <div class="col-md-2">
+                            <label>System name</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" ng-model="logData.ls_systemname">
+                        </div>
+                    </div>
+                    <div class="row padding-tb">
+                        <div class="col-md-2">
+                            <label>Usage</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" ng-model="logData.ls_usage">
+                        </div>
+                    </div>                    
+                </div>
+                <div class="form-group">
+                    <div class="row padding-tb">                        
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-1 padding-tb">IP</div>
+                                <div class="col-md-2 padding-tb"><input type="radio" name="IP" ng-model="logData.ls_moitortype" value="0">&nbsp;&nbsp;&nbsp;NA</div>
+                                <div class="col-md-2 padding-tb"><input type="radio" name="IP" ng-model="logData.ls_moitortype" value="1">&nbsp;&nbsp;Dynamic</div>
+                                <div class="col-md-2 padding-tb"><input type="radio" name="IP" ng-model="logData.ls_moitortype" value="2">&nbsp;&nbsp;&nbsp;Static</div>
+                                <div class="col-md-5"><input type="text" class="form-control" ng-model="logData.ls_ipv4"></div>
+                            </div>                                
+                        </div>                                                
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row padding-tb">                        
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-8">SOC Status</div>
+                                <div class="col-md-2"><input type="radio" name="status" ng-model="logData.ls_monitorstatus" value="1">&nbsp;&nbsp;Active</div>
+                                <div class="col-md-2"><input type="radio" name="status" ng-model="logData.ls_monitorstatus" value="0">&nbsp;&nbsp;&nbsp;Passive</div>                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="row padding-tb">
+                        <div class="col-md-2">
+                            <label>FQDN name</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" ng-model="logData.ls_fqdn">
+                        </div>
+                    </div>
+                    <div class="row padding-tb">
+                        <div class="col-md-2">
+                            <label>MAC</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" ng-model="logData.ls_mac">
+                        </div>
+                    </div>
+                    <div class="row padding-tb">
+                        <div class="col-md-2">
+                            <label>Information in system</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" ng-model="logData.ls_storedinformation">
+                        </div>
+                    </div>
+                    <div class="row padding-tb">
+                        <div class="col-md-2">
+                            <label>Model</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row padding-tb">
+                        <div class="col-md-2">
+                            <label>Comment</label>
+                        </div>
+                        <div class="col-md-4">
+                            <textarea class="form-control" ng-model="logData.ls_comment">
+                            </textarea>
+                        </div>
+                    </div>                    
+                </div>
             </div>
         </div>
-        <div class="form-group">
-
-        </div>
-        <div class="form-group">
-            <label>SOC Status</label>
-
-        </div>
-    </div>    
-    <div>
-        <div class="form-group">
-            <div class="form-inline">
-                <label>FQDN name</label>
-                <input type="text" class="form-control" ng-model="logData.ls_fqdn">                    
-            </div>
-            <div class="form-inline">
-                <label>MAC</label>
-                <input type="text" class="form-control" ng-model="logData.ls_mac">                    
-            </div>
-            <div class="form-inline">
-                <label>Information in system</label>
-                <input type="text" class="form-control" ng-model="logData.ls_storedinformation">
-            </div>
-            <div class="form-inline">
-                <label>Model</label>
-                <input type="text" class="form-control">                    
-            </div>
-            <div class="form-inline">
-                <label>Comment</label>
-                <textarea class="form-control" ng-model="logData.ls_comment">
-                </textarea>
+        <div class="row" ng-if="mode!='read'">
+            <div class="col-md-2 col-offset-md-10">
+                <button type="button" class="btn btn-success" ng-click="fn.onSave()">Save</button>            
             </div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-offset">
-        <button type="button" class="btn btn-success" ng-click="fn.onSave()">Save</button>            
     </div>
 </div>

@@ -68,7 +68,7 @@
               <div class="form-group">
                 <label>Logsourceid</label>
                 <select class="form-control" ng-model="var.filter.logsourceid">
-                  <option ng-if="current_user.rolename != 'Client'">All</option>
+                  <!-- <option ng-if="current_user.rolename != 'Client'">All</option> -->
                   <option ng-repeat="l in var.logsourceid">{{l}}</option>
                 </select>
               </div>

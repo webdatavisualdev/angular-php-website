@@ -35,7 +35,7 @@
 		<link rel="stylesheet prefetch" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
 
 		<!-- Custom Theme Style -->
-		<link href="build/css/custom.min.css" rel="stylesheet">
+		<link href="build/css/custom.css" rel="stylesheet">
 		<link href="build/css/mods.css" rel="stylesheet">  
     
   </head>
@@ -59,6 +59,7 @@
               <div class="profile_info">
                 <span>Welcome,</span>
                 <h2>{{current_user.usr_username}}</h2>
+                <div>{{current_user.cl_name}}</div>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -70,7 +71,7 @@
               <div class="menu_section">
                 <h3>General{{current_page}}</h3>
                 <ul class="nav side-menu">
-                  <li ng-if="authenticated && current_user.rolename == 'Admin'" class="{{current_page == 'users' ? 'current-page' : ''}}">
+                  <li ng-if="authenticated && current_user.rolename == 'Admin'" class="{{current_page == 'users' ? 'current-page active-custom':''}}">
                       <a ui-sref="users"><img src="public/images/admin.png"><span class="sm-copy">Admin</span></a>
                   </li>
                   <li class="{{current_page==''||current_page=='alert'||(alert_id!=0&&toDetailFrom=='alert')?'current-page active-custom':''}}">
@@ -86,11 +87,11 @@
                       <a><img src="public/images/auser.png"> <span class="sm-copy">Client</span></a>
                   </li>
                   <li>
-                    <a ui-sref="logsources"><i class="fa fa-television" aria-hidden="true" style="font-size:24px"></i> <span class="sm-copy">Logsources</span> <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a ui-sref="alert">Overview</a></li>
-                      <li><a ui-sref="risk">Add</a></li>
-                      <li><a href="javascript:void(0)" ng-click="fn.toDetails()">Import</a></li>
+                    <a data-toggle="collapse" data-target="#demo"><i class="fa fa-television" aria-hidden="true" style="font-size:24px"></i> <span class="sm-copy">Logsources</span> <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu collapse" id="demo">
+                      <li class="{{current_page=='logsources'?'current-page active-custom':''}}"><a ui-sref="logsources">Overview</a></li>
+                      <li class="{{current_page=='editlogsource'?'current-page active-custom':''}}"><a ui-sref="editlogsource">Add</a></li>
+                      <li class="{{current_page=='importpage'?'current-page active-custom':''}}"><a ui-sref="importpage">Import</a></li>
                     </ul>
                   </li>
                 </ul>

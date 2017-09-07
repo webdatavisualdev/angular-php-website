@@ -44,8 +44,7 @@ angular.module('application')
                 getRoles:function(){
                     RoleService.getRoles().then(function(res){                        
                         if(res.status){
-                            scope.roles = res.data;
-                            console.log($('.input-sm').length);
+                            scope.roles = res.data;                            
                         }                        
                     }, function(){
                         console.log('error');
@@ -54,7 +53,7 @@ angular.module('application')
                 
                 getUsers:function(){                    
                     UsersService.getUsers().then(function(res){                        
-                        if(res.status){                                
+                        if(res.status){                            
                             scope.users = res.data;                            
                         }
                     }, function(){
@@ -64,6 +63,10 @@ angular.module('application')
 
                 addUser:function(){                    
                     scope.newUser.roleid = parseInt(scope.selectedRole.roleid);
+                    if(scope.selectedRole.rolename == 'Client'){
+                        scope.newUser.clientid = 4500002;
+                    }
+                    
                     if(scope.picFile)
                         scope.newUser.usr_picture = scope.picFile.name;
                     
@@ -167,6 +170,7 @@ angular.module('application')
                 },
 
                 init:function(){
+                    console.log('asdasdsadsa');
                     $rootScope.current_page = 'users';
                     scope.fn.getUsers();
                     scope.fn.getRoles();

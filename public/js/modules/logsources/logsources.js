@@ -1,5 +1,5 @@
 angular.module('application')
-.directive('logsourcesModule', [ '$http','$rootScope','$location','$state','$uibModal','$compile','DTOptionsBuilder', 'DTColumnDefBuilder', 'LogsourcesService', function($http,$rootScope,$location,$state,$uibModal,$compile, DTOptionsBuilder, DTColumnDefBuilder, LogsourcesService){
+.directive('logsourcesModule', [ '$http','$rootScope','$location','$state','$uibModal','$compile','DTOptionsBuilder', 'DTColumnDefBuilder', 'LogsourcesService', 'UsersService', function($http,$rootScope,$location,$state,$uibModal,$compile, DTOptionsBuilder, DTColumnDefBuilder, LogsourcesService, UsersService){
 	return {
 		restrict:'E',
 		templateUrl:'public/js/modules/logsources/logsources.html',
@@ -9,7 +9,8 @@ angular.module('application')
             scope.logs = [];                   
             scope.alert = 'Do you want to delete this Logsource?';            
             scope.root = $rootScope.imageRoot;
-            
+            scope.users = [];
+
             scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers');
             scope.dtColumnDefs = [
                 DTColumnDefBuilder.newColumnDef(0),
@@ -21,16 +22,25 @@ angular.module('application')
                 DTColumnDefBuilder.newColumnDef(6).notSortable()
             ];           
             
-			scope.fn={                
-                getLogs:function(){ 
-                    console.log('oooooo');                   
+			scope.fn={
+                getUsers: function(){
+                    UsersService.getUsers().then(function(res){                        
+                        if(res.status){                            
+                            scope.users = res.data;
+                        }
+                    }, function(){
+                        console.log('error');
+                    });
+                },
+
+                getLogs:function(){                                  
                     LogsourcesService.getLogs().then(function(res){
                         console.log(res);
                         if(res.status){                                
                             scope.logs = res.data;
                         }
-                    }, function(){
-                        console.log('error');
+                    }, function(error){
+                        console.log(error);
                     });
                 },
                 
@@ -46,12 +56,18 @@ angular.module('application')
                     });
                 },
 
-                onAddLog: function(){
-
+                onImportLog: function(){                    
+                    $state.go('importpage');
                 },
 
-                onImportLog: function(){
-
+                getUser: function(itownid){
+                    var result = scope.users.filter(function(user){
+                        return user.userid==itownid;
+                    });
+                    if(result.length>0)
+                        return result[0].usr_username;
+                    else
+                        return '';
                 },
 
                 onAdd: function(){
@@ -59,8 +75,11 @@ angular.module('application')
                 },
 
                 onUpdate: function(log){
-                    scope.selectedLog = log;                                        
-                    scope.fn.updateModalPopup();
+                    $state.go('editlogsource',{data: log, uid: log.ls_sequence, ls_mode: 'edit'});
+                },
+
+                onDetail: function(log){                    
+                    $state.go('editlogsource',{data: log, mode: 'read'});
                 },
 
                 onDelete: function(uid){
@@ -76,19 +95,12 @@ angular.module('application')
             
                     scope.modalInstance = modal;            
                     return modal.result
-                },               
-                
-                ok: function() {
-                    scope.modalInstance.close();
-                    scope.fn.deleteLog();
-                },
-                cancel: function() {
-                    scope.modalInstance.close();
-                },
+                },                
 
                 init:function(){
                     console.log('oooooo');
                     $rootScope.current_page = 'logsources';
+                    scope.fn.getUsers();
                     scope.fn.getLogs();                    
 				}			
             };

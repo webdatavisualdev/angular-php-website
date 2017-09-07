@@ -1,3 +1,4 @@
+
 /**
  * Resize function without multiple trigger
  * 
@@ -69,8 +70,7 @@ var setContentHeight = function () {
 	$RIGHT_COL.css('min-height', contentHeight);
 };
 
-  $SIDEBAR_MENU.find('a').on('click', function(ev) {
-	  console.log('clicked - sidebar_menu');
+  $SIDEBAR_MENU.find('a').on('click', function(ev) {	  
         var $li = $(this).parent();
 
         if ($li.is('.active')) {
@@ -100,9 +100,7 @@ var setContentHeight = function () {
     });
 
 // toggle small or large menu 
-$MENU_TOGGLE.on('click', function() {
-		console.log('clicked - menu toggle');
-		
+$MENU_TOGGLE.on('click', function() {		
 		if ($BODY.hasClass('nav-md')) {
 			$SIDEBAR_MENU.find('li.active ul').hide();
 			$SIDEBAR_MENU.find('li.active').addClass('active-sm').removeClass('active');
@@ -119,7 +117,7 @@ $MENU_TOGGLE.on('click', function() {
 });
 
 	// check active menu
-	$SIDEBAR_MENU.find('a[href="' + CURRENT_URL + '"]').parent('li').addClass('current-page');
+	// $SIDEBAR_MENU.find('a[href="' + CURRENT_URL + '"]').parent('li').addClass('current-page');
 
 	$SIDEBAR_MENU.find('a').filter(function () {
 		return this.href == CURRENT_URL;
@@ -2740,6 +2738,7 @@ if (typeof NProgress != 'undefined') {
 				});
 
 				$MENU_TOGGLE.on('click', function() {
+					console.log('MENU_TOGGLE1')
 				  $(window).resize();
 				});
 			
