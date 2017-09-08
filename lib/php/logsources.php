@@ -6,7 +6,7 @@
     header('Access-Control-Allow-Headers:Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
     error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);    
     
-    $tblName = 'db_logsources.logsources';
+    $tblName = 'dblogsources.logsources';
 
     if(isset($_REQUEST['type']) && !empty($_REQUEST['type'])){
         $type = $_REQUEST['type'];

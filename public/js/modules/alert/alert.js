@@ -51,7 +51,8 @@ angular.module('application')
 				},
 				getAlerts:function(){
 					scope.var.alerts=[];
-					$http.post(scope.server,{getAlerts:1}).success(function(v){
+
+					$http.post(scope.server,{getAlerts:1,clientid: $rootScope.current_user.clientid}).success(function(v){
 						if(v.status=='true'){
 							scope.var.alerts=v.alerts;
 						}else{
@@ -69,6 +70,10 @@ angular.module('application')
 							}
 						}
 						if(!(scope.var.filter.date_from<=scope.var.alerts[i].date&&scope.var.filter.date_to>=scope.var.alerts[i].date)){
+							continue;
+						}
+
+						if(scope.var.alerts.clientid!=$rootScope.current_user.clientid && $rootScope.current_user.rolename!='Admin'){
 							continue;
 						}
 						var bool=false;
@@ -203,8 +208,7 @@ angular.module('application')
 				
 				var val=this.value;
 				var d=new Date(val);
-				scope.$apply(function(){
-					// console.log('applied');
+				scope.$apply(function(){					
 					if($('.date-picker-to:eq(0)').val()!=''){
 						if($('.date-picker-to:eq(0)').val()<val){
 							$('.date-picker-to:eq(0)').val(val);

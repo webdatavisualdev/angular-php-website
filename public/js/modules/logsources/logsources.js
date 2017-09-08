@@ -11,6 +11,20 @@ angular.module('application')
             scope.root = $rootScope.imageRoot;
             scope.users = [];
 
+            scope.filterConf ={
+                platform: [],
+                countries: [],
+                locations: [],
+                priorities: [],
+                users: []
+            }
+
+            scope.selectedFilter = {
+                country: '-1',
+                platid: '-1',
+                priority: '-1'
+            }
+
             scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers');
             scope.dtColumnDefs = [
                 DTColumnDefBuilder.newColumnDef(0),
@@ -20,9 +34,23 @@ angular.module('application')
                 DTColumnDefBuilder.newColumnDef(4).notSortable(),
                 DTColumnDefBuilder.newColumnDef(5).notSortable(),
                 DTColumnDefBuilder.newColumnDef(6).notSortable()
-            ];           
+            ];
             
 			scope.fn={
+                getConfig: function(){                    
+                    LogsourcesService.getConfig().then(function(res){
+                        if(res.status){                           
+                            scope.filterConf.platform = res.platform;
+                            scope.filterConf.countries = res.countries;
+                            scope.filterConf.locations = res.locations;
+                            scope.filterConf.priorities = res.priorities; 
+                            scope.filterConf.users = res.users;                            
+                        }
+                    }, function(){
+                        console.log('error');
+                    });
+                },
+
                 getUsers: function(){
                     UsersService.getUsers().then(function(res){                        
                         if(res.status){                            
@@ -87,6 +115,36 @@ angular.module('application')
                     scope.fn.modalPopup();
                 },
 
+                onRest: function(){
+                    scope.selectedFilter.country = '-1';
+                    scope.selectedFilter.platid = '-1';
+                    scope.selectedFilter.priority = '-1';
+                },
+
+                onFilter: function(){
+                    var result = scope.logs;
+
+                    if(scope.selectedFilter.country != '-1'){
+                        result = result.filter(function(log){
+                            return log.ls_country==scope.selectedFilter.country;
+                        });
+                    }
+
+                    if(scope.selectedFilter.platid != '-1'){
+                        result = result.filter(function(log){
+                            return log.platid==scope.selectedFilter.priority;
+                        });
+                    }
+
+                    if(scope.selectedFilter.priority != '-1'){
+                        result = result.filter(function(log){
+                            return log.ls_priority==scope.selectedFilter.priority;
+                        });                        
+                    }
+                    return result;
+
+                },
+
                 modalPopup: function() {                    
                     modal = $uibModal.open({
                         templateUrl: 'public/partials/modal.html',
@@ -97,9 +155,9 @@ angular.module('application')
                     return modal.result
                 },                
 
-                init:function(){
-                    console.log('oooooo');
+                init:function(){                    
                     $rootScope.current_page = 'logsources';
+                    scope.fn.getConfig();
                     scope.fn.getUsers();
                     scope.fn.getLogs();                    
 				}			
