@@ -23,9 +23,11 @@ var App = angular.module('application',['ngRoute','oc.lazyLoad', 'ui.router', 'u
                     'public/js/modules/users/users.js',
                     'public/js/services/users.service.js',
                     'public/js/services/role.service.js',
+                    'public/js/services/client.service.js',
                     {type:'css',path:'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css'},
                     {type:'css',path:'build/css/mods.css'},
-                    'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js','assets/js/moment.js'                    
+                    'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js','assets/js/moment.js',
+                    'vendors/angular-datatables-angular1/dist/angular-datatables.min.js'
                 ],
 				cache:true
             },
@@ -192,7 +194,8 @@ var App = angular.module('application',['ngRoute','oc.lazyLoad', 'ui.router', 'u
         "USERS": "lib/php" + "/users.php",
         "ROLES": "lib/php" + "/roles.php",
         "LOGS":  "lib/php" + "/logsources.php",
-        "ASSET": 'lib/php' + "/asset.php"
+        "ASSET": 'lib/php' + "/asset.php",
+        "CLIENTS": 'lib/php' + "/clients.php"
     },
     "HEADER": {
         'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',

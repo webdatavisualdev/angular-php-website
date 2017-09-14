@@ -6,8 +6,8 @@ angular.module('application')
 		templateUrl:'public/js/modules/login/login.html',
 		link:function(scope,elem,attr){			
             scope.server = 'lib/php/login.php';
-            scope.username = 'User1';
-            scope.password = 'password';
+            scope.username = '';
+            scope.password = '';
             scope.alert = '! Information you have entered dose not exit in the system, kindly contact SAC Support, using the "forgot my pasword link below"';
             
 			scope.fn={

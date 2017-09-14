@@ -7,6 +7,12 @@
                 <label for="">Role</label>
                 <select name="userrole" class="form-control"  ng-model="selectedRole" ng-options="role.rolename for role in roles" required></select>                
             </div>
+            <div class="form-group" ng-if="selectedRole.rolename == 'Client'">
+                <label for="">ClientID</label>                
+                <select name="clientid" class="form-control" ng-model="selectedClient.clientid">                    
+                    <option ng-repeat="client in clients" value="{{client.clientid}}">{{client.cl_name}}</option>
+                </select>
+            </div>
             <div class="form-group">
                 <label for="">UserName</label>
                 <input name="username" type="text" class="form-control"  placeholder="Input Username" ng-model="newUser.usr_username" required/>

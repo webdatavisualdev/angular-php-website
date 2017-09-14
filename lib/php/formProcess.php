@@ -11,7 +11,7 @@ if(isset($_ANG)&&count($_ANG)>0){
 	if(isset($_ANG['login'])){
 		login();
 	}
-	if(isset($_ANG['getAlerts'])){
+	if(isset($_ANG['getAlerts'])){		
 		getAlerts();
 	}
 	if(isset($_ANG['getFilterConfig'])){

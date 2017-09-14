@@ -1,5 +1,5 @@
 angular.module('application')
-.directive('usersModule', [ '$http','$rootScope','$location','$uibModal','$compile','DTOptionsBuilder', 'DTColumnDefBuilder', 'UsersService', 'RoleService', function($http,$rootScope,$location,$uibModal,$compile, DTOptionsBuilder, DTColumnDefBuilder, UsersService, RoleService){
+.directive('usersModule', [ '$http','$rootScope','$location','$uibModal','$compile','DTOptionsBuilder', 'DTColumnDefBuilder', 'UsersService', 'RoleService', 'ClientService',function($http,$rootScope,$location,$uibModal,$compile, DTOptionsBuilder, DTColumnDefBuilder, UsersService, RoleService, ClientService){
 	return {
 		restrict:'E',
 		templateUrl:'public/js/modules/users/users.html',
@@ -9,7 +9,12 @@ angular.module('application')
             scope.selectedUserId = '';
             scope.users = [];
             scope.roles = [];
+            scope.clients = [];
             scope.selectedRole = {};
+            scope.selectedClient = {
+                clientid: 4500001
+            };
+            scope.selectedClientId = 0;
             scope.updateRole = {roleid:0};
             scope.newUser = {                
                 clientid: 4500001,
@@ -22,13 +27,14 @@ angular.module('application')
             scope.selectedUser = {};
             scope.alert = 'Do you want to delete this user?';            
             scope.root = $rootScope.imageRoot;
-            scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(2);
-            // scope.dtOptions = DTOptionsBuilder
-            //     .newOptions()                             
-            //     .withOption('order', [1, 'asc'])
-            //     .withOption('lengthMenu', [10, 25, 50, 100, 250, 500])                
-            //     .withPaginationType('full_numbers')
-            //     .withDOM('pitrfl');
+            //scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(2);
+            scope.dtOptions = DTOptionsBuilder
+                .newOptions()                             
+                .withOption('order', [1, 'asc'])
+                .withOption('lengthMenu', [10, 25, 50, 100, 250, 500])                
+                .withPaginationType('full_numbers')
+                // .withBootstrap();
+                // .withDOM('pitrfl');
 
             scope.dtColumnDefs = [
                 DTColumnDefBuilder.newColumnDef(0),
@@ -50,11 +56,38 @@ angular.module('application')
                         console.log('error');
                     });
                 },
+
+                getClients:function(){
+                    ClientService.getClients().then(function(res){                        
+                        if(res.status){
+                            scope.clients = res.data.filter(function(client){
+                                return client.clientid != 4500001;
+                            });                                                      
+                        }                        
+                    }, function(){
+                        console.log('error');
+                    });
+                },
+
+                refreshUser: function(){
+                    scope.newUser = {                
+                        clientid: 4500001,
+                        usr_username: '',
+                        usr_password: '',
+                        usr_email: '',
+                        roleid: 1,
+                        usr_picture: ''
+                    };
+                    scope.selectedRole = {};
+                    scope.selectedClient = {
+                        clientid: 4500001
+                    };
+                },
                 
                 getUsers:function(){                    
                     UsersService.getUsers().then(function(res){                        
                         if(res.status){                            
-                            scope.users = res.data;                            
+                            scope.users = res.data;
                         }
                     }, function(){
                         console.log('error');
@@ -64,7 +97,7 @@ angular.module('application')
                 addUser:function(){                    
                     scope.newUser.roleid = parseInt(scope.selectedRole.roleid);
                     if(scope.selectedRole.rolename == 'Client'){
-                        scope.newUser.clientid = 4500002;
+                        scope.newUser.clientid = scope.selectedClient.clientid;
                     }
                     
                     if(scope.picFile)
@@ -73,9 +106,10 @@ angular.module('application')
                     UsersService.addUser(scope.newUser, scope.picFile).then(function(res){                        
                         if(res.data.status){
                             scope.users.push(res.data.data);
+                            scope.fn.refreshUser();
                         }                        
-                    }, function(){
-                        console.log('error');
+                    }, function(error){
+                        console.log(error);
                     });
                 },
 
@@ -95,7 +129,7 @@ angular.module('application')
 
                     UsersService.updateUser(updateData, scope.picFile, scope.selectedUser.userid).then(function(res){                        
                         if(res.data.status){
-                            
+                            scope.fn.refreshUser();
                         }                        
                     }, function(){
                         console.log('error');
@@ -174,6 +208,7 @@ angular.module('application')
                     $rootScope.current_page = 'users';
                     scope.fn.getUsers();
                     scope.fn.getRoles();
+                    scope.fn.getClients();
 				}			
             };
 
