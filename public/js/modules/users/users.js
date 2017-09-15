@@ -63,8 +63,7 @@ angular.module('application')
                             scope.clients = res.data.filter(function(client){
                                 return client.clientid != 4500001;
                             });                                                      
-                        }
-                        console.log(scope.clients.length);
+                        }                        
                     }, function(){
                         console.log('error');
                     });
@@ -204,8 +203,7 @@ angular.module('application')
                     scope.modalInstance.close();
                 },
 
-                init:function(){
-                    console.log('asdasdsadsa');
+                init:function(){                   
                     $rootScope.current_page = 'users';
                     scope.fn.getClients();
                     scope.fn.getUsers();
