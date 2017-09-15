@@ -186,9 +186,9 @@ var App = angular.module('application',['ngRoute','oc.lazyLoad', 'ui.router', 'u
         });
     
 })
-
-.constant("CONSTANTS", {
-    "IMAGE": "http://127.0.0.1/upload_files/",
+// "IMAGE": "http://127.0.0.1/upload_files/",
+.constant("CONSTANTS", {    
+    "IMAGE": "http://172.18.242.142/upload_files/",    
     "APIS": {
         "LOGIN": "lib/php" + "/login.php",
         "USERS": "lib/php" + "/users.php",
