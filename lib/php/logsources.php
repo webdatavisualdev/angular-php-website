@@ -6,7 +6,7 @@
     header('Access-Control-Allow-Headers:Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
     error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);    
     
-    $tblName = 'dblogsources.logsources';
+    $tblName = 'db_logsources.logsources';
 
     if(isset($_REQUEST['type']) && !empty($_REQUEST['type'])){
         $type = $_REQUEST['type'];
@@ -37,11 +37,11 @@
             $resp['platform'] = $rs->fetch_all(MYSQLI_ASSOC); 
         }
 
-        if($rs=getRows('dblogsources.tbl_locations','1=1 ORDER BY locationid ASC',0,0,2)){
+        if($rs=getRows('db_logsources.tbl_locations','1=1 ORDER BY locationid ASC',0,0,2)){
 			$resp['locations'] = $rs->fetch_all(MYSQLI_ASSOC);
         }       
 
-        if($rs=getRows('dblogsources.tbl_country','1=1 ORDER BY Name ASC',0,0,2)){
+        if($rs=getRows('db_logsources.tbl_country','1=1 ORDER BY Name ASC',0,0,2)){
 			$resp['countries'] = $rs->fetch_all(MYSQLI_ASSOC);
         }
 
@@ -56,7 +56,7 @@
     function getLogs()    {
         global $tblName;
 
-        if($result = getJoinedRows($tblName, 'dbalert.tbl_platform', 'platid','1=1','INNER',0,0,2)){-       
+        if($result = getJoinedRows($tblName, 'db_alert.tbl_platform', 'platid','1=1','INNER',0,0,2)){-       
             $resp['status'] = true;
             $resp['data'] = $result->fetch_all(MYSQLI_ASSOC);
         }
