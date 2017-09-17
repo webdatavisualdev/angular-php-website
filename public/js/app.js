@@ -26,7 +26,8 @@ var App = angular.module('application',['ngRoute','oc.lazyLoad', 'ui.router', 'u
                     'public/js/services/client.service.js',
                     {type:'css',path:'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css'},
                     {type:'css',path:'build/css/mods.css'},
-                    'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js','assets/js/moment.js',
+                    'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js','assets/js/moment.js',                    
+                    'https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js',
                     'vendors/angular-datatables-angular1/dist/angular-datatables.min.js'
                 ],
 				cache:true
@@ -40,7 +41,9 @@ var App = angular.module('application',['ngRoute','oc.lazyLoad', 'ui.router', 'u
                     'public/js/services/asset.service.js',
                     {type:'css',path:'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css'},
                     {type:'css',path:'build/css/mods.css'},
-                    'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js','assets/js/moment.js'                    
+                    'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js','assets/js/moment.js',                    
+                    'https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js',
+                    'vendors/angular-datatables-angular1/dist/angular-datatables.min.js'
                 ],
 				cache:true
             },

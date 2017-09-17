@@ -50,9 +50,9 @@
                 </div>
             </div>            
         </div>
-        <table id="dt_logs" class="table table-bordered bordered table-striped table-condensed datatable" datatable="ng" ui-jq="dataTable" ui-options="dataTableOpt">
+        <table class="table table-bordered bordered table-striped table-condensed datatable" datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="row-border hover">                
             <thead>
-                <tr>
+                <tr>                    
                     <th>Logsourceid</th>
                     <th>Name</th>
                     <th>Asset type</th>
@@ -63,7 +63,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="log in fn.onFilter()">
+                <tr ng-repeat="log in fn.onFilter() track by $index">                    
                     <td>{{log.logsourceid}}</td>
                     <td>{{log.ls_systemname}}</td>
                     <td>{{log.pl_name}}</td>                    
@@ -76,6 +76,6 @@
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table>        
     </div>
 </div>

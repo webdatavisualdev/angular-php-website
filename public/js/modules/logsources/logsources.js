@@ -1,5 +1,5 @@
 angular.module('application')
-.directive('logsourcesModule', [ '$http','$rootScope','$location','$state','$uibModal','$compile','DTOptionsBuilder', 'DTColumnDefBuilder', 'LogsourcesService', 'UsersService', function($http,$rootScope,$location,$state,$uibModal,$compile, DTOptionsBuilder, DTColumnDefBuilder, LogsourcesService, UsersService){
+.directive('logsourcesModule', [ '$http','$rootScope','$location','$state','$uibModal','$compile','DTOptionsBuilder', 'DTColumnDefBuilder', 'DTColumnBuilder', 'LogsourcesService', 'UsersService', function($http,$rootScope,$location,$state,$uibModal,$compile, DTOptionsBuilder, DTColumnDefBuilder, DTColumnBuilder, LogsourcesService, UsersService){
 	return {
 		restrict:'E',
 		templateUrl:'public/js/modules/logsources/logsources.html',
@@ -25,7 +25,12 @@ angular.module('application')
                 priority: '-1'
             }
 
-            scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers');
+            scope.dtOptions = DTOptionsBuilder
+                .newOptions()                             
+                .withOption('order', [1, 'asc'])
+                .withOption('lengthMenu', [10, 25, 50, 100, 250, 500])                
+                .withPaginationType('full_numbers');            
+
             scope.dtColumnDefs = [
                 DTColumnDefBuilder.newColumnDef(0),
                 DTColumnDefBuilder.newColumnDef(1),
@@ -33,7 +38,7 @@ angular.module('application')
                 DTColumnDefBuilder.newColumnDef(3).notSortable(),
                 DTColumnDefBuilder.newColumnDef(4).notSortable(),
                 DTColumnDefBuilder.newColumnDef(5).notSortable(),
-                DTColumnDefBuilder.newColumnDef(6).notSortable()
+                DTColumnDefBuilder.newColumnDef(6).notSortable()                
             ];
             
 			scope.fn={
