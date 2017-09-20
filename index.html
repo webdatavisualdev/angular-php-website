@@ -69,7 +69,7 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" ng-if="authenticated" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>General{{current_page}}</h3>
+                <h3>General {{current_page}}</h3>
                 <ul class="nav side-menu">
                   <li ng-if="authenticated && current_user.rolename == 'Admin'" class="{{current_page == 'users' ? 'current-page active-custom':''}}">
                       <a ui-sref="users"><img src="public/images/admin.png"><span class="sm-copy">Admin</span></a>

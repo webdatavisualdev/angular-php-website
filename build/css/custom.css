@@ -788,7 +788,8 @@ a:focus {
     padding: 13px 15px 12px
 }
 .nav.side-menu>li.current-page-custom,
-.nav.side-menu>li.active-custom {
+.nav.side-menu>li.active-custom,
+.nav.child_menu li.active-custom {
     border-right: 5px solid #1ABB9C
 }
 .nav li.current-page-custom {
@@ -800,7 +801,8 @@ a:focus {
 .nav li li.current-page-custom a {
     color: #fff
 }
-.nav.side-menu>li.active-custom>a {
+.nav.side-menu li.active-custom>a,
+.nav.child_menu li.active-custom>a {
     text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
     background: linear-gradient(#334556, #2C4257), #2A3F54;
     box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0

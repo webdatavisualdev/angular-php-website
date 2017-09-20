@@ -7,7 +7,7 @@ angular.module('application')
             scope.logData = {
                 logsourceid: 1,
                 platid: 0, // Asset Type
-                ls_country: '', // Country
+                ls_country: 'DNK', // Country
                 ls_priority: 0, // Asset Value
                 ls_location: 0, // location
                 ls_itownid: 1, //ITadmin
@@ -139,14 +139,13 @@ angular.module('application')
                     }
                 },
 
-                init:function(){
-                    console.log('load data ', $stateParams);
+                init:function(){                    
                     if($stateParams.data){
                         scope.selectedLog = $stateParams.uid;                        
                         scope.mode = $stateParams.mode;
                         scope.fn.updateLogData(scope.logData,$stateParams.data);
                     }                    
-                    $rootScope.current_page = 'editlogsources';
+                    $rootScope.current_page = 'editlogsource';
                     scope.fn.getConfig();
 
 				}			

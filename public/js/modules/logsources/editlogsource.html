@@ -1,13 +1,14 @@
 <div class="panel">    
     <div class="panel-heading border">
-        <div><h4>Add Logsource:</h4></div>
+        <div ng-if="mode!='read'"><h4>Add Logsource:</h4></div>
+        <div ng-if="mode=='read'"><h4>View Logsource:</h4></div>
     </div>
     <div class="panel-body">
         <div class="row">
             <div class="col-md-1">
                 <div class="form-group">
                 <label>Asset type</label>
-                <select class="form-control" ng-model="logData.platid">            
+                <select class="form-control" ng-model="logData.platid" ng-disabled="mode=='read'">            
                     <option ng-repeat="plat in filterConf.platform" value="{{plat.platid}}">{{plat.pl_description}}</option>
                 </select>
                 </div>
@@ -15,7 +16,7 @@
             <div class="col-md-1">
                 <div class="form-group">
                 <label>Country</label>
-                <select class="form-control" ng-model="logData.ls_country">                    
+                <select class="form-control" ng-model="logData.ls_country" ng-disabled="mode=='read'">                    
                     <option ng-repeat="country in filterConf.countries" value="{{country.Code}}">{{country.Name}}</option>
                 </select>
                 </div>
@@ -23,19 +24,19 @@
             <div class="col-md-1">
                 <div class="form-group">
                     <label>Asset Value</label>            
-                    <select class="form-control" ng-model="logData.ls_priority">                        
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
+                    <select class="form-control" ng-model="logData.ls_priority" ng-disabled="mode=='read'">   
                         <option value="5">5</option>
+                        <option value="4">4</option>
+                        <option value="3">3</option>
+                        <option value="2">2</option>
+                        <option value="1">1</option>
                     </select>
                 </div>
             </div>
             <div class="col-md-1">
                 <div class="form-group">
                     <label>Location</label>
-                    <select class="form-control" ng-model="logData.ls_location">                       
+                    <select class="form-control" ng-model="logData.ls_location" ng-disabled="mode=='read'">                       
                         <option ng-repeat="location in filterConf.locations" value="{{location.locationid}}">{{location.Name}}</option>
                     </select>
                 </div>
@@ -43,7 +44,7 @@
             <div class="col-md-1">
                 <div class="form-group">
                     <label>ITadn</label>
-                    <select class="form-control" ng-model="logData.ls_itownid">                        
+                    <select class="form-control" ng-model="logData.ls_itownid" ng-disabled="mode=='read'">
                         <option ng-repeat="user in filterConf.users" value="{{user.userid}}">{{user.usr_username}}</option>
                     </select>
                 </div>
@@ -51,22 +52,22 @@
             <div class="col-md-1">
                 <div class="form-group">
                     <label>Escalation</label>
-                    <select class="form-control">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
+                    <select class="form-control" ng-disabled="mode=='read'">
                         <option value="5">5</option>
+                        <option value="4">4</option>
+                        <option value="3" selected>3</option>
+                        <option value="2">2</option>
+                        <option value="1">1</option>
                 </select>
                 </div>
             </div>
             <div class="col-md-1">
                 <div class="form-group">
                     <label>Impact</label>
-                    <select class="form-control" ng-model="logData.ls_businessimpact">
-                        <option value="1">1</option>
+                    <select class="form-control" ng-model="logData.ls_businessimpact" ng-disabled="mode=='read'">
+                        <option value="3">3</option>
                         <option value="2">2</option>
-                        <option value="3">3</option>                        
+                        <option value="1">1</option>                        
                     </select>
                 </div>
             </div>    
@@ -77,7 +78,7 @@
                             <label>NTP version</label>
                         </div>
                         <div class="col-md-7">
-                            <select class="form-control">
+                            <select class="form-control" ng-disabled="mode=='read'">
                                 <option value="v1">v1</option>
                                 <option value="v2">v2</option>
                                 <option value="v3">v3</option>
@@ -89,7 +90,7 @@
                             <label>Source</label>
                         </div>
                         <div class="col-md-7">
-                            <input type="text" name="source" class="form-control"/>
+                            <input type="text" name="source" class="form-control" ng-readonly="mode=='read'"/>
                         </div>                        
                     </div>
                 </div>        
@@ -101,7 +102,7 @@
                             <label>Log Type</label>
                         </div>
                         <div class="col-md-6">
-                            <select class="form-control" ng-model="logData.ls_logsformat">
+                            <select class="form-control" ng-model="logData.ls_logsformat" ng-disabled="mode=='read'">
                                 <option>syslog</option>
                                 <option>nxlog</option>
                                 <option>filebeat</option>
@@ -114,7 +115,7 @@
                             <label>Protocol</label>
                         </div>
                         <div class="col-md-6">
-                            <select class="form-control" ng-model="logData.ls_logprotocol">
+                            <select class="form-control" ng-model="logData.ls_logprotocol" ng-disabled="mode=='read'">
                                 <option>TCP</option>
                                 <option>UDP</option>                                
                             </select>
@@ -125,8 +126,8 @@
                             <label>Port</label>
                         </div>
                         <div class="col-md-6">
-                            <select class="form-control" ng-model="logData.ls_logprort">
-                                <option>515</option>
+                            <select class="form-control" ng-model="logData.ls_logprort" ng-disabled="mode=='read'">
+                                <option>514</option>
                                 <option>1514</option>
                                 <option>5000</option>
                                 <option>9944</option>
@@ -144,7 +145,7 @@
                             <label>System name</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" ng-model="logData.ls_systemname">
+                            <input type="text" class="form-control" ng-model="logData.ls_systemname" ng-readonly="mode=='read'">
                         </div>
                     </div>
                     <div class="row padding-tb">
@@ -152,7 +153,7 @@
                             <label>Usage</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" ng-model="logData.ls_usage">
+                            <input type="text" class="form-control" ng-model="logData.ls_usage" ng-readonly="mode=='read'">
                         </div>
                     </div>                    
                 </div>
@@ -161,10 +162,10 @@
                         <div class="col-md-8">
                             <div class="row">
                                 <div class="col-md-1 padding-tb">IP</div>
-                                <div class="col-md-2 padding-tb"><input type="radio" name="IP" ng-model="logData.ls_moitortype" value="0">&nbsp;&nbsp;&nbsp;NA</div>
-                                <div class="col-md-2 padding-tb"><input type="radio" name="IP" ng-model="logData.ls_moitortype" value="1">&nbsp;&nbsp;Dynamic</div>
-                                <div class="col-md-2 padding-tb"><input type="radio" name="IP" ng-model="logData.ls_moitortype" value="2">&nbsp;&nbsp;&nbsp;Static</div>
-                                <div class="col-md-5"><input type="text" class="form-control" ng-model="logData.ls_ipv4"></div>
+                                <div class="col-md-2 padding-tb"><input type="radio" name="IP" ng-model="logData.ls_moitortype" value="0" ng-disabled="mode=='read'">&nbsp;&nbsp;&nbsp;NA</div>
+                                <div class="col-md-2 padding-tb"><input type="radio" name="IP" ng-model="logData.ls_moitortype" value="1" ng-disabled="mode=='read'">&nbsp;&nbsp;Dynamic</div>
+                                <div class="col-md-2 padding-tb"><input type="radio" name="IP" ng-model="logData.ls_moitortype" value="2" ng-disabled="mode=='read'">&nbsp;&nbsp;&nbsp;Static</div>
+                                <div class="col-md-5"><input type="text" class="form-control" ng-model="logData.ls_ipv4" ng-readonly="mode=='read'"></div>
                             </div>                                
                         </div>                                                
                     </div>
@@ -174,8 +175,8 @@
                         <div class="col-md-8">
                             <div class="row">
                                 <div class="col-md-8">SOC Status</div>
-                                <div class="col-md-2"><input type="radio" name="status" ng-model="logData.ls_monitorstatus" value="1">&nbsp;&nbsp;Active</div>
-                                <div class="col-md-2"><input type="radio" name="status" ng-model="logData.ls_monitorstatus" value="0">&nbsp;&nbsp;&nbsp;Passive</div>                        
+                                <div class="col-md-2"><input type="radio" name="status" ng-model="logData.ls_monitorstatus" value="1" ng-disabled="mode=='read'">&nbsp;&nbsp;Active</div>
+                                <div class="col-md-2"><input type="radio" name="status" ng-model="logData.ls_monitorstatus" value="0" ng-disabled="mode=='read'">&nbsp;&nbsp;&nbsp;Passive</div>                        
                             </div>
                         </div>
                     </div>
@@ -188,7 +189,7 @@
                             <label>FQDN name</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" ng-model="logData.ls_fqdn">
+                            <input type="text" class="form-control" ng-model="logData.ls_fqdn" ng-readonly="mode=='read'">
                         </div>
                     </div>
                     <div class="row padding-tb">
@@ -196,7 +197,7 @@
                             <label>MAC</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" ng-model="logData.ls_mac">
+                            <input type="text" class="form-control" ng-model="logData.ls_mac" ng-readonly="mode=='read'">
                         </div>
                     </div>
                     <div class="row padding-tb">
@@ -204,7 +205,7 @@
                             <label>Information in system</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" ng-model="logData.ls_storedinformation">
+                            <input type="text" class="form-control" ng-model="logData.ls_storedinformation" ng-readonly="mode=='read'">
                         </div>
                     </div>
                     <div class="row padding-tb">
@@ -212,7 +213,7 @@
                             <label>Model</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" ng-readonly="mode=='read'">
                         </div>
                     </div>
                     <div class="row padding-tb">
@@ -220,7 +221,7 @@
                             <label>Comment</label>
                         </div>
                         <div class="col-md-4">
-                            <textarea class="form-control" ng-model="logData.ls_comment">
+                            <textarea class="form-control" ng-model="logData.ls_comment" ng-readonly="mode=='read'">
                             </textarea>
                         </div>
                     </div>                    
@@ -228,7 +229,7 @@
             </div>
         </div>
         <div class="row" ng-if="mode!='read'">
-            <div class="col-md-2 col-offset-md-10">
+            <div class="col-md-2 col-md-offset-10">
                 <button type="button" class="btn btn-success" ng-click="fn.onSave()">Save</button>            
             </div>
         </div>
