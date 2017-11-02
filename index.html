@@ -110,6 +110,9 @@
               </div>
 
               <ul class="nav navbar-nav navbar-right">
+                <li ng-if="authenticated==true">
+                  <a href="" ng-click="fn.logout()">Logout</a>
+                </li>
                 <li class="" ng-if="authenticated">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     Language Settings
@@ -130,10 +133,7 @@
                 </li>
                 <li ng-if="authenticated==true">
                   <a href="">Search</a>
-                </li>
-                <li ng-if="authenticated==true">
-                  <a href="" ng-click="fn.logout()">Logout</a>
-                </li>                
+                </li>              
                 <li ng-if="!authenticated">
                   <a ui-sref="login">Login</a>
                 </li>
@@ -148,9 +148,6 @@
                 </li>
                 <li>
                   <a href="#/alert">Home</a>
-                </li>
-                <li ng-if="authenticated==true">
-                  <a href="">Welcome {{current_user.usr_username}}</a>
                 </li>
               </ul>
             </nav>
