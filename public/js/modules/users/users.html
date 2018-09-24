@@ -28,7 +28,6 @@
             <div class="form-group">
                 <label for="">Picture</label>
                 <input type="file" accept="image/*" ng-model="picFile" onchange="angular.element(this).scope().fn.loadImage(files)">
-                <!-- <input type="file"  accept="image/*" class="form-control" ng-model="newUser.usr_picture" required/> -->
             </div>
             <img id="output"/>            
             <button type="button" class="btn btn-success" ng-disabled="userForm.$invalid || !selectedRole.roleid" ng-click="fn.addUser()">Save</button>            

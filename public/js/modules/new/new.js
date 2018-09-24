@@ -4,7 +4,6 @@ angular.module('newapp')
 		restrict: 'E',
 		templateUrl:'public/js/modules/new/new.html',
 		link:function(scope,elem,attr){
-			console.log('new loaded');
 			scope.dates=[
 				{
 					month:'Jan',
@@ -126,29 +125,10 @@ angular.module('newapp')
 				{
 					res_id:0,
 					days:1
-				}//uncommmited
+				}
 			];
 			scope.getStatus=function(l,date){
-				// var def=['n','n','n','n','n','n','n','n','n','n','n'];
-				// var arr=[];
-				// for(var i=0;i<scope.reservations.length;i++){
-				// 	if(scope.reservations[i].listing_id==l.listing_id){
-				// 		for(var j=0;j<date.length;j++){
-				// 			if(parseInt(date[j].date)<parseInt(scope.reservations[i].start_date)||parseInt(date[j].date)>parseInt(scope.reservations[i].end_date)){
-				// 				arr[j]=
-				// 			}else if(parseInt(date[j].date)==parseInt(scope.reservations[i].start_date)){
-				// 				def="nwt3riu-half-u";
-				// 			}else if(parseInt(date[j].date)>parseInt(scope.reservations[i].start_date)&&parseInt(date[j].date)<parseInt(scope.reservations[i].end_date)){
-				// 				def="nwt3riu-full";
-				// 			}else {
-				// 				def="nwt3riu-half-b";
-				// 			}
-				// 		}
-				// 	}else{
-
-				// 	}
-				// }
-				return st;//['nwt3riu-half-u','nwt3riu-full','nwt3riu-full','nwt3riu-half-b','n','n','n','n','n','n','n'];
+				return st;
 			}
 			scope.getCellWidth=function(s){
 			 	return false&&s.res_id!=0?((s.days)*70):70;

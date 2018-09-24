@@ -1,226 +1,224 @@
-<!-- top tiles -->
-          <div class="row" ng-if="alert_id==0">
-            <div class="col-md-1">
-              <div class="form-group">
-                <label>Asset type</label>
-                <select class="form-control" ng-model="var.filter.asset_type">
-                  <option>All</option>
-                  <option ng-repeat="asv in var.asset_type" value="{{asv.platid}}">{{asv.pl_description}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-1">
-              <div class="form-group">
-                <label>Alert No</label>
-                <select class="form-control" ng-model="var.filter.alert_no">
-                  <option>All</option>
-                  <option ng-repeat="an in var.alert_no">{{an}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-1">
-              <div class="form-group">
-                <label>Timestamp</label>
-                <input type="text" class="form-control date-picker" ng-model="var.filter.timestamp" style="font-size:9px;">  
-              </div>
-            </div>
-            <div class="col-md-1">
-              <div class="form-group">
-                <label>Alert name</label>
-                <select class="form-control" ng-model="var.filter.alert_name">
-                  <option>All</option>
-                  <option ng-repeat="an in var.alert_name">{{an}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-1">
-              <div class="form-group">
-                <label>Category</label>
-                <select class="form-control" ng-model="var.filter.categories">
-                  <option>All</option>
-                  <option ng-repeat="c in var.categories" value="{{c.cateid}}">{{c.ca_name}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-1">
-              <div class="form-group">
-                <label>Risk level</label>
-                <select class="form-control" ng-model="var.filter.risk_level">
-                  <option>All</option>
-                  <option>Critical</option>
-                  <option>Serious</option>
-                  <option>Moderate</option>
-                  <option>Insignificant</option>
-                  <option>Undefined</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-1">
-              <div class="form-group">
-                <label>Asset value</label>
-                <select class="form-control" ng-model="var.filter.asset_value">
-                  <option>All</option>
-                  <option ng-repeat="av in fn.int2Array(1,5)">{{av}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-1">
-              <div class="form-group">
-                <label>Logsourceid</label>
-                <select class="form-control" ng-model="var.filter.logsourceid">
-                  <option>All</option>
-                  <option ng-repeat="l in var.logsourceid">{{l}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-1">
-              <div class="form-group">
-                <div>
-                  <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="all"> All
-                </div>
-                <div>
-                  <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="client"> Client
-                </div>
-                <div>
-                  <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="partner"> Partnerid
-                </div>
-                <br>
-                <select class="form-control" ng-model="var.filter.cp_no" ng-disabled="var.filter.client_partner=='all'">
-                  <option ng-repeat="l in fn.getClientPartner()">{{l}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-1">
-              <label>Page</label>
-              <select class="form-control" ng-model="var.page.page_no">
-                <option ng-repeat="p in fn.int2Array(1,fn.getTotalPage())">{{p}}</option>
-              </select>
-            </div>
-            <div class="col-md-1">
-              <label>Page Size</label>
-               <select class="form-control" ng-model="var.page.page_size" ng-change="var.page.page_no='1'">
-                <option>10</option>
-                <option>20</option>
-                <option>30</option>
-              </select>
-            </div>
-            <div class="col-md-1">
-              <label>Action</label>
-              <button class="btn btn-success" ng-click="fn.resetFilters()">Reset All</button>
-            </div> 
-          </div>
+<div class="row" ng-if="alert_id==0">
+  <div class="col-md-1">
+    <div class="form-group">
+      <label>Asset type</label>
+      <select class="form-control" ng-model="var.filter.asset_type">
+        <option>All</option>
+        <option ng-repeat="asv in var.asset_type" value="{{asv.platid}}">{{asv.pl_description}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <div class="form-group">
+      <label>Alert No</label>
+      <select class="form-control" ng-model="var.filter.alert_no">
+        <option>All</option>
+        <option ng-repeat="an in var.alert_no">{{an}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <div class="form-group">
+      <label>Timestamp</label>
+      <input type="text" class="form-control date-picker" ng-model="var.filter.timestamp" style="font-size:9px;">  
+    </div>
+  </div>
+  <div class="col-md-1">
+    <div class="form-group">
+      <label>Alert name</label>
+      <select class="form-control" ng-model="var.filter.alert_name">
+        <option>All</option>
+        <option ng-repeat="an in var.alert_name">{{an}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <div class="form-group">
+      <label>Category</label>
+      <select class="form-control" ng-model="var.filter.categories">
+        <option>All</option>
+        <option ng-repeat="c in var.categories" value="{{c.cateid}}">{{c.ca_name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <div class="form-group">
+      <label>Risk level</label>
+      <select class="form-control" ng-model="var.filter.risk_level">
+        <option>All</option>
+        <option>Critical</option>
+        <option>Serious</option>
+        <option>Moderate</option>
+        <option>Insignificant</option>
+        <option>Undefined</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <div class="form-group">
+      <label>Asset value</label>
+      <select class="form-control" ng-model="var.filter.asset_value">
+        <option>All</option>
+        <option ng-repeat="av in fn.int2Array(1,5)">{{av}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <div class="form-group">
+      <label>Logsourceid</label>
+      <select class="form-control" ng-model="var.filter.logsourceid">
+        <option>All</option>
+        <option ng-repeat="l in var.logsourceid">{{l}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <div class="form-group">
+      <div>
+        <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="all"> All
+      </div>
+      <div>
+        <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="client"> Client
+      </div>
+      <div>
+        <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="partner"> Partnerid
+      </div>
+      <br>
+      <select class="form-control" ng-model="var.filter.cp_no" ng-disabled="var.filter.client_partner=='all'">
+        <option ng-repeat="l in fn.getClientPartner()">{{l}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <label>Page</label>
+    <select class="form-control" ng-model="var.page.page_no">
+      <option ng-repeat="p in fn.int2Array(1,fn.getTotalPage())">{{p}}</option>
+    </select>
+  </div>
+  <div class="col-md-1">
+    <label>Page Size</label>
+      <select class="form-control" ng-model="var.page.page_size" ng-change="var.page.page_no='1'">
+      <option>10</option>
+      <option>20</option>
+      <option>30</option>
+    </select>
+  </div>
+  <div class="col-md-1">
+    <label>Action</label>
+    <button class="btn btn-success" ng-click="fn.resetFilters()">Reset All</button>
+  </div> 
+</div>
 
-          <div class="row bold-grey">
-            <div class="col-md-3">
-              <table class="table tb-no-border mod-tb">
-                <tbody>
-                  <tr>
-                    <td>Client</td>
-                    <td>{{fn.getMenuItems.getClient()}}</td>
-                  </tr>
-                  <tr>
-                    <td>Risk Level</td>
-                    <td>
-                      <span ng-if="fn.getMenuItems.getRiskLevel('class')!='All'"><div class="risk-ind {{fn.getMenuItems.getRiskLevel('class')}}"></div> {{fn.getMenuItems.getRiskLevel('value')}}</span>
-                      <span ng-if="fn.getMenuItems.getRiskLevel('class')=='All'">All</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="col-md-3">
-              <table class="table tb-no-border mod-tb">
-                <tbody>
-                  <tr>
-                    <td>Asset type</td>
-                    <td>{{fn.getMenuItems.getAssetType()}}</td>
-                  </tr>
-                  <tr>
-                    <td>Timestamp</td>
-                    <td>{{fn.getMenuItems.getTimestamp()}}</td>
-                  </tr>
-                  <tr>
-                    <td>Alert name</td>
-                    <td>{{fn.getMenuItems.getAlertName()}}</td>
-                  </tr>
-                </tbody>
-              </table>  
-            </div>
-            <div class="col-md-3">
-              <table class="table tb-no-border mod-tb">
-                <tbody>
-                  <tr>
-                    <td>Category</td>
-                    <td>{{fn.getMenuItems.getCategory()}}</td>
-                  </tr>
-                  <tr>
-                    <td>Asset value</td>
-                    <td>{{fn.getMenuItems.getAssetValue()}}</td>
-                  </tr>
-                  <tr>
-                    <td>Logsource id</td>
-                    <td>{{fn.getMenuItems.getLogSource()}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+<div class="row bold-grey">
+  <div class="col-md-3">
+    <table class="table tb-no-border mod-tb">
+      <tbody>
+        <tr>
+          <td>Client</td>
+          <td>{{fn.getMenuItems.getClient()}}</td>
+        </tr>
+        <tr>
+          <td>Risk Level</td>
+          <td>
+            <span ng-if="fn.getMenuItems.getRiskLevel('class')!='All'"><div class="risk-ind {{fn.getMenuItems.getRiskLevel('class')}}"></div> {{fn.getMenuItems.getRiskLevel('value')}}</span>
+            <span ng-if="fn.getMenuItems.getRiskLevel('class')=='All'">All</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-3">
+    <table class="table tb-no-border mod-tb">
+      <tbody>
+        <tr>
+          <td>Asset type</td>
+          <td>{{fn.getMenuItems.getAssetType()}}</td>
+        </tr>
+        <tr>
+          <td>Timestamp</td>
+          <td>{{fn.getMenuItems.getTimestamp()}}</td>
+        </tr>
+        <tr>
+          <td>Alert name</td>
+          <td>{{fn.getMenuItems.getAlertName()}}</td>
+        </tr>
+      </tbody>
+    </table>  
+  </div>
+  <div class="col-md-3">
+    <table class="table tb-no-border mod-tb">
+      <tbody>
+        <tr>
+          <td>Category</td>
+          <td>{{fn.getMenuItems.getCategory()}}</td>
+        </tr>
+        <tr>
+          <td>Asset value</td>
+          <td>{{fn.getMenuItems.getAssetValue()}}</td>
+        </tr>
+        <tr>
+          <td>Logsource id</td>
+          <td>{{fn.getMenuItems.getLogSource()}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <div class="ind-detail col-md-12 col-sm-12 col-xs-12" ng-repeat="d in fn.getFilteredDetails()|limitTo:fn.getPageSize():fn.getPageLimit()"  ng-init="d.toggleShow='raw'">
+    
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-1">{{d.al_sequence}}</div>
+        <div class="col-md-11">
+          <div class="form-group">
+            <textarea class="form-control" ng-model="d.al_rawmessage"  style="height:100px;"></textarea>
           </div>
-          
-          <!-- /top tiles -->
-          <hr>
-          <div class="row">
-            <div class="ind-detail col-md-12 col-sm-12 col-xs-12" ng-repeat="d in fn.getFilteredDetails()|limitTo:fn.getPageSize():fn.getPageLimit()"  ng-init="d.toggleShow='raw'">
-              
-              <div class="col-md-9">
-                <div class="row">
-                  <div class="col-md-1">{{d.al_sequence}}</div>
-                  <div class="col-md-11">
-                    <div class="form-group">
-                      <textarea class="form-control" ng-model="d.al_rawmessage"  style="height:100px;"></textarea>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-1">
-                <div class="row">
-                  <a class="btn btn-success col-md-12 " href="http://{{d.al_rawlink}}" target="_blank">Go to Raw</a>
-                </div>
-                <div class="row">
-                  <a class="btn btn-success col-md-12 " href="http://palybool.sacsol.com/{{d.al_playbook}}" target="_blank">Open Play</a>
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="form-group">
-                    <label>Change Status</label>
-                    <select class="form-control" ng-model="d.al_incidentstatus" ng-change="fn.updateStatus(d)">
-                      <option value="1">Open</option>
-                      <option value="2">Triage</option>
-                      <option value="3">Escalated</option>
-                      <option value="4">Closed</option>
-                      <option value="5">Defered</option>
-                    </select>
-                    <small id="passwordHelpBlock" class="form-text text-muted" ng-init="d.changestatus_show=false;d.changestatus_resp;" ng-show="d.changestatus_show">
-                      {{d.changestatus_resp}}
-                    </small>
-                </div>
-                
-              </div>
-            </div>
-          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <div class="row">
+        <a class="btn btn-success col-md-12 " href="http://{{d.al_rawlink}}" target="_blank">Go to Raw</a>
+      </div>
+      <div class="row">
+        <a class="btn btn-success col-md-12 " href="http://palybool.sacsol.com/{{d.al_playbook}}" target="_blank">Open Play</a>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+          <label>Change Status</label>
+          <select class="form-control" ng-model="d.al_incidentstatus" ng-change="fn.updateStatus(d)">
+            <option value="1">Open</option>
+            <option value="2">Triage</option>
+            <option value="3">Escalated</option>
+            <option value="4">Closed</option>
+            <option value="5">Defered</option>
+          </select>
+          <small id="passwordHelpBlock" class="form-text text-muted" ng-init="d.changestatus_show=false;d.changestatus_resp;" ng-show="d.changestatus_show">
+            {{d.changestatus_resp}}
+          </small>
+      </div>
+      
+    </div>
+  </div>
+</div>
 
 
-          
-         <div class="pull-right" style="margin-right: 20px !important;" ng-show="alert_id==0">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  <ul class="pagination" style="margin-bottom: 40px !important; margin-top:10px !important;">
-                    <li><a href="javascript:void(0)" ng-click="fn.decPage()"><i class="fa fa-angle-left"></i></a></li>
-                    <li><a href="javascript:void(0)" ng-repeat="p in fn.getPagination(fn.getPageNo(),fn.getTotalPage())" ng-click="var.page.page_no=p+''" style="{{var.page.page_no==p+''?'font-weight:bold;':''}}">{{p}}</a></li>
-                    <li><a href="javascript:void(0)" ng-click="fn.incPage()"><i class="fa fa-angle-right"></i></a></li>
-                  </ul>
-                </div>
-            </div>
-          </div>
 
-          
-          <div class="clearfix"></div>
+<div class="pull-right" style="margin-right: 20px !important;" ng-show="alert_id==0">
+  <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <ul class="pagination" style="margin-bottom: 40px !important; margin-top:10px !important;">
+          <li><a href="javascript:void(0)" ng-click="fn.decPage()"><i class="fa fa-angle-left"></i></a></li>
+          <li><a href="javascript:void(0)" ng-repeat="p in fn.getPagination(fn.getPageNo(),fn.getTotalPage())" ng-click="var.page.page_no=p+''" style="{{var.page.page_no==p+''?'font-weight:bold;':''}}">{{p}}</a></li>
+          <li><a href="javascript:void(0)" ng-click="fn.incPage()"><i class="fa fa-angle-right"></i></a></li>
+        </ul>
+      </div>
+  </div>
+</div>
+
+
+<div class="clearfix"></div>

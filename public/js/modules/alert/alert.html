@@ -1,155 +1,152 @@
-<!-- top tiles -->
 <div ng-show="true">
-          <div class="row">
-            <div class="col-md-2">
-              <div class="form-group">
-                <div>
-                  <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="all"> All
-                </div>
-                <div>
-                  <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="client"> Client
-                </div>
-                <div>
-                  <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="partner"> Partnerid
-                </div>
-                <br>
-                <select class="form-control" ng-model="var.filter.cp_no" ng-disabled="var.filter.client_partner=='all'">
-                  <option ng-repeat="l in fn.getClientPartner()">{{l}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-2">
-              <label>Period</label>
-              <table class="table">
-                <tbody>
-                  <tr>
-                    <td>From</td>
-                    <td><input type="text" class="form-control date-picker-from" ng-model="var.filter.date_from" readOnly></td>
-                  </tr>
-                  <tr>
-                    <td>To</td>
-                    <td><input type="text" class="form-control date-picker-to" ng-model="var.filter.date_to" readOnly></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="col-md-2">
-              <label>Severity</label>
-              <select class="form-control" multiple="multiple" ng-model="var.filter.severity">
-                <option>High</option>
-                <option>Medium</option>
-                <option>Low</option>
-              </select>
-            </div>
-            <div class="col-md-1">
-              <label>Page</label>
-              <select class="form-control" ng-model="var.page.page_no">
-                <option ng-repeat="p in fn.int2Array(1,fn.getTotalPage())">{{p}}</option>
-              </select>
-            </div>
-            <div class="col-md-1">
-              <label>Page Size</label>
-              <select class="form-control" ng-model="var.page.page_size" ng-change="var.page.page_no='1'">
-                <option>10</option>
-                <option>20</option>
-                <option>30</option>
-              </select>
-            </div>
-            <div class="col-md-2">
-              <label>Asset Value</label>
-              <select class="form-control"  multiple="multiple" ng-model="var.filter.asset_value">
-                <option>5</option>
-                <option>4</option>
-                <option>3</option>
-                <option>2</option>
-                <option>1</option>
-              </select>
-            </div>
-            <div class="col-md-1">
-              <label>Category</label>
-              <select class="form-control" ng-model="var.filter.categories">
-                <option value="none">All</option>
-                <option ng-repeat="c in var.categories" value="{{c.cateid}}" >{{c.ca_name}}</option>
-              </select>
-            </div>
-            <div class="col-md-1">
-              <label>Action</label><br>
-              <button class="btn btn-success" ng-click="fn.resetFilters()">Reset All</button>
-            </div>
-          </div>
+  <div class="row">
+    <div class="col-md-2">
+      <div class="form-group">
+        <div>
+          <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="all"> All
+        </div>
+        <div>
+          <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="client"> Client
+        </div>
+        <div>
+          <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="partner"> Partnerid
+        </div>
+        <br>
+        <select class="form-control" ng-model="var.filter.cp_no" ng-disabled="var.filter.client_partner=='all'">
+          <option ng-repeat="l in fn.getClientPartner()">{{l}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <label>Period</label>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>From</td>
+            <td><input type="text" class="form-control date-picker-from" ng-model="var.filter.date_from" readOnly></td>
+          </tr>
+          <tr>
+            <td>To</td>
+            <td><input type="text" class="form-control date-picker-to" ng-model="var.filter.date_to" readOnly></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-2">
+      <label>Severity</label>
+      <select class="form-control" multiple="multiple" ng-model="var.filter.severity">
+        <option>High</option>
+        <option>Medium</option>
+        <option>Low</option>
+      </select>
+    </div>
+    <div class="col-md-1">
+      <label>Page</label>
+      <select class="form-control" ng-model="var.page.page_no">
+        <option ng-repeat="p in fn.int2Array(1,fn.getTotalPage())">{{p}}</option>
+      </select>
+    </div>
+    <div class="col-md-1">
+      <label>Page Size</label>
+      <select class="form-control" ng-model="var.page.page_size" ng-change="var.page.page_no='1'">
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <label>Asset Value</label>
+      <select class="form-control"  multiple="multiple" ng-model="var.filter.asset_value">
+        <option>5</option>
+        <option>4</option>
+        <option>3</option>
+        <option>2</option>
+        <option>1</option>
+      </select>
+    </div>
+    <div class="col-md-1">
+      <label>Category</label>
+      <select class="form-control" ng-model="var.filter.categories">
+        <option value="none">All</option>
+        <option ng-repeat="c in var.categories" value="{{c.cateid}}" >{{c.ca_name}}</option>
+      </select>
+    </div>
+    <div class="col-md-1">
+      <label>Action</label><br>
+      <button class="btn btn-success" ng-click="fn.resetFilters()">Reset All</button>
+    </div>
+  </div>
 
-          <div class="row">
-            <div class="col-md-2">
-              <h3>Risk Indicator</h3>
-              Asset Value * Threat Impact
-            </div>
-            <div class="col-md-2">
-              <h3><div class="risk-ind ri-cri"></div> Critical</h3>
-              <div class="ri-center">12, 15</div>
-            </div>
-            <div class="col-md-2">
-              <h3><div class="risk-ind ri-ser"></div> Serious</h3>
-              <div class="ri-center">10, 9, 8</div>
-            </div>
-            <div class="col-md-2">
-              <h3><div class="risk-ind ri-mod"></div> Moderate</h3>
-              <div class="ri-center">6</div>
-            </div>
-            <div class="col-md-2">
-              <h3><div class="risk-ind ri-ins"></div> Insignificant</h3>
-              <div class="ri-center">5, 4, 3, 2</div>
-            </div>
-            <div class="col-md-2">
-              <h3><div class="risk-ind ri-und"></div> Undefined</h3>
-              <div class="ri-center">1</div>
-            </div>
-          </div>
-          
-          <!-- /top tiles -->
-          <hr>
+  <div class="row">
+    <div class="col-md-2">
+      <h3>Risk Indicator</h3>
+      Asset Value * Threat Impact
+    </div>
+    <div class="col-md-2">
+      <h3><div class="risk-ind ri-cri"></div> Critical</h3>
+      <div class="ri-center">12, 15</div>
+    </div>
+    <div class="col-md-2">
+      <h3><div class="risk-ind ri-ser"></div> Serious</h3>
+      <div class="ri-center">10, 9, 8</div>
+    </div>
+    <div class="col-md-2">
+      <h3><div class="risk-ind ri-mod"></div> Moderate</h3>
+      <div class="ri-center">6</div>
+    </div>
+    <div class="col-md-2">
+      <h3><div class="risk-ind ri-ins"></div> Insignificant</h3>
+      <div class="ri-center">5, 4, 3, 2</div>
+    </div>
+    <div class="col-md-2">
+      <h3><div class="risk-ind ri-und"></div> Undefined</h3>
+      <div class="ri-center">1</div>
+    </div>
+  </div>
+  
+  <hr>
 
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Name</th>
-                    <th>Timestamp</th>
-                    <th>Risk level</th>
-                    <th>Logsourveid</th>
-                    <th>Asset value</th>
-                    <th>Category</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr ng-repeat="al in fn.getFilteredAlerts()|limitTo:fn.getPageSize():fn.getPageLimit()" >
-                    <td>{{al.al_sequence}}</td>
-                    <td>{{al.client_name}}</td>
-                    <td>{{al.al_incidenttime}}</td>
-                     <td><div class="risk-ind {{fn.getRiskLevel(al.al_risklevel,'class')}}"></div> {{fn.getRiskLevel(al.al_risklevel,'value')}}</td> 
-                    <!-- <td>{{al.al_risklevel}}</td> -->
-                    <td>{{al.logsourceid}}</td>
-                    <td>{{al.ls_priority}}</td>
-                    <td>{{al.al_category}}<br/>{{al.category_name}}</td>
-                    <td><button class="btn btn-success" ng-click="fn.getDetails(al)">Details</button></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Timestamp</th>
+            <th>Risk level</th>
+            <th>Logsourveid</th>
+            <th>Asset value</th>
+            <th>Category</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="al in fn.getFilteredAlerts()|limitTo:fn.getPageSize():fn.getPageLimit()" >
+            <td>{{al.al_sequence}}</td>
+            <td>{{al.client_name}}</td>
+            <td>{{al.al_incidenttime}}</td>
+            <td><div class="risk-ind {{fn.getRiskLevel(al.al_risklevel,'class')}}"></div> {{fn.getRiskLevel(al.al_risklevel,'value')}}</td> 
+            <td>{{al.logsourceid}}</td>
+            <td>{{al.ls_priority}}</td>
+            <td>{{al.al_category}}<br/>{{al.category_name}}</td>
+            <td><button class="btn btn-success" ng-click="fn.getDetails(al)">Details</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-          </div>
+  </div>
 
-          <div class="pull-right" style="margin-right: 20px !important;">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  <ul class="pagination" style="margin-bottom: 40px !important; margin-top:10px !important;">
-                    <li><a href="javascript:void(0)" ng-click="fn.decPage()"><i class="fa fa-angle-left"></i></a></li>
-                    <li><a href="javascript:void(0)" ng-repeat="p in fn.getPagination(fn.getPageNo(),fn.getTotalPage())" ng-click="var.page.page_no=p+''" style="{{var.page.page_no==p+''?'font-weight:bold;':''}}">{{p}}</a></li>
-                    <li><a href="javascript:void(0)" ng-click="fn.incPage()"><i class="fa fa-angle-right"></i></a></li>
-                  </ul>
-                </div>
-            </div>
-          </div>
+  <div class="pull-right" style="margin-right: 20px !important;">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <ul class="pagination" style="margin-bottom: 40px !important; margin-top:10px !important;">
+            <li><a href="javascript:void(0)" ng-click="fn.decPage()"><i class="fa fa-angle-left"></i></a></li>
+            <li><a href="javascript:void(0)" ng-repeat="p in fn.getPagination(fn.getPageNo(),fn.getTotalPage())" ng-click="var.page.page_no=p+''" style="{{var.page.page_no==p+''?'font-weight:bold;':''}}">{{p}}</a></li>
+            <li><a href="javascript:void(0)" ng-click="fn.incPage()"><i class="fa fa-angle-right"></i></a></li>
+          </ul>
+        </div>
+    </div>
+  </div>
 </div>

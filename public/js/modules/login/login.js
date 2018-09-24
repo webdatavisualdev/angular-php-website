@@ -1,4 +1,3 @@
-// , $uibModal
 angular.module('application')
 .directive('loginModule',function($http,$rootScope,$location,$uibModal, $state){
 	return {
@@ -30,12 +29,10 @@ angular.module('application')
                                 scope.fn.gotoHome();
                             }
                             else{
-                                console.log(v);
                                 scope.fn.modalPopup();   
                             }
                         }).
                         error(function(){
-                            console.log('error');
                             scope.fn.modalPopup();
                         }
                     );

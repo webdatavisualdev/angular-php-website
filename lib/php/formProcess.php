@@ -1,6 +1,5 @@
 <?php
 
-// include('sessionVerify.php');
 include('sql_functions.php');
 header('access-control-allow-origin:*');
 header('Access-Control-Allow-Headers:Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
@@ -25,7 +24,6 @@ if(isset($_ANG)&&count($_ANG)>0){
 	}
 	
 }
-//anghooks
 
 function getAlerts(){
 	if($rs=getRows('tbl_alarms')){

@@ -37,14 +37,6 @@ angular.module('application')
 						client_partner:'client',
 						cp_no:scope.var.client_partner.clients.length>0?scope.var.client_partner.clients[0]:'',
 						risklevel:[],
-						// rs_ind:{
-						// 	all:true,
-						// 	open:true,
-						// 	triage:true,
-						// 	escalated:true,
-						// 	closed:true,
-						// 	defered:true
-						// },
 						rs_ind:'all',
 						risk_status:{
 							critical:true,
@@ -69,14 +61,12 @@ angular.module('application')
 						if(v.status=='true'){
 							scope.var.alerts=v.alerts;
 						}else{
-							console.log(v.status);
 						}
 					});
 				},
 				getFilteredAlerts:function(){
 					var arr=[];
 					for(var i=0;i<scope.var.alerts.length;i++){
-						// console.log(JSON.stringify(scope.var.filter));
 						if(scope.var.filter.client_partner!='all'){
 							if(!((scope.var.filter.client_partner=='client'&&scope.var.alerts[i].clientid==scope.var.filter.cp_no)||(scope.var.filter.client_partner=='partner'&&scope.var.alerts[i].cl_partnerid==scope.var.filter.cp_no))){
 								continue;
@@ -101,17 +91,6 @@ angular.module('application')
 					$rootScope.toDetailFrom='risk';
 					$location.path('/detail');
 				},
-				// checkAll:function(){
-				// 	bool=scope.var.filter.rs_ind.all;
-				// 	scope.var.filter.rs_ind={
-				// 		all:bool,
-				// 		open:bool,
-				// 		triage:bool,
-				// 		escalated:bool,
-				// 		closed:bool,
-				// 		defered:bool
-				// 	};
-				// },
 				getTotalPage:function(){
 					var arr=scope.fn.getFilteredAlerts();
 					return arr.length<=0?1:Math.ceil(arr.length/parseInt(scope.var.page.page_size));

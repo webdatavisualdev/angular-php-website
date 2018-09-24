@@ -41,7 +41,6 @@ angular.module('application')
 						risk_level:'All',
 						logsourceid: $rootScope.current_user.rolename != 'Client' ? 'All' : scope.var.logsourceid[0],
 					};
-					console.log('filter',scope.var.filter);
 					scope.var.page={
 						page_no:'1',
 						page_size:'10'
@@ -56,7 +55,6 @@ angular.module('application')
 						if(v.status=='true'){
 							scope.var.details=v.details;
 						}else{
-							console.log(v.status);
 						}
 					});
 				},
@@ -69,7 +67,6 @@ angular.module('application')
 					}
 					for(var i=0;i<scope.var.details.length;i++){
 						
-						//filtering here
 						if(scope.var.filter.client_partner!='all'){
 							if(!((scope.var.filter.client_partner=='client'&&scope.var.details[i].clientid==scope.var.filter.cp_no)||(scope.var.filter.client_partner=='partner'&&scope.var.details[i].cl_partnerid==scope.var.filter.cp_no))){
 								continue;
@@ -147,7 +144,6 @@ angular.module('application')
 						al_sequence:a.al_sequence,
 						al_incidentstatus:a.al_incidentstatus
 					};
-					console.log(JSON.stringify(par));
 					$http.post(scope.server,{updateStatus:par}).success(function(v){
 						a.changestatus_resp="Changed from "+scope.fn.getStatusValue(parseInt(v.prev))+" to "+scope.fn.getStatusValue(parseInt(a.al_incidentstatus));
 						a.changestatus_show=true;

@@ -1,4 +1,3 @@
-// , $uibModal
 angular.module('application')
 .directive('firstModule',function($http,$rootScope,$location,$uibModal){
 	return {

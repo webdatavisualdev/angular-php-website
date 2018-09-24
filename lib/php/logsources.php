@@ -69,7 +69,6 @@
     function getLog($uid=0){
         if($result = getJoinedRows('tbl_users', 'tbl_roles', 'roleid', 'tbl_users.userid='.$uid)){        
             return $result->fetch_array(MYSQLI_ASSOC);
-            //return $result->fetch_all();            
         }
         else{
             return null;

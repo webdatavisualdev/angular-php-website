@@ -189,7 +189,6 @@ var App = angular.module('application',['ngRoute','oc.lazyLoad', 'ui.router', 'u
         });
     
 })
-// "IMAGE": "http://127.0.0.1/upload_files/",
 .constant("CONSTANTS", {    
     "IMAGE": "http://172.18.242.142/upload_files/",    
     "APIS": {
@@ -214,7 +213,6 @@ var App = angular.module('application',['ngRoute','oc.lazyLoad', 'ui.router', 'u
 
 .run(function($rootScope,$http,$location){	
     $rootScope.authenticated = false;
-    //$rootScope.imageRoot = 'http://127.0.0.1/upload_files/'
     $rootScope.imageRoot = 'http://127.0.0.1/upload_files/'
     $rootScope.alert_id=0;
     $rootScope.current_page = '';    

@@ -6,7 +6,6 @@ angular.module('application')
 		link:function(scope,elem,attr){
 			$rootScope.current_page="alert";
 			scope.server="lib/php/formProcess.php";
-			console.log('alert loaded');
 			scope.fn={
 				getFilterConfig:function(){
 					
@@ -56,14 +55,12 @@ angular.module('application')
 						if(v.status=='true'){
 							scope.var.alerts=v.alerts;
 						}else{
-							console.log(v.status);
 						}
 					});
 				},
 				getFilteredAlerts:function(){
 					var arr=[];
 					for(var i=0;i<scope.var.alerts.length;i++){
-						// console.log(JSON.stringify(scope.var.filter));
 						if(scope.var.filter.client_partner!='all'){
 							if(!((scope.var.filter.client_partner=='client'&&scope.var.alerts[i].clientid==scope.var.filter.cp_no)||(scope.var.filter.client_partner=='partner'&&scope.var.alerts[i].cl_partnerid==scope.var.filter.cp_no))){
 								continue;
@@ -193,7 +190,6 @@ angular.module('application')
                 window.location.replace('/');			
 
 			scope.$watch('var.filter.client_partner',function(){
-				console.log('called');
 			});
 		}
 	}

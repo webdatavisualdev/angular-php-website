@@ -52,7 +52,6 @@ angular.module('application')
                             scope.filterConf.users = res.users;                            
                         }
                     }, function(){
-                        console.log('error');
                     });
                 },
 
@@ -62,18 +61,15 @@ angular.module('application')
                             scope.users = res.data;
                         }
                     }, function(){
-                        console.log('error');
                     });
                 },
 
                 getLogs:function(){                                  
                     LogsourcesService.getLogs().then(function(res){
-                        console.log(res);
                         if(res.status){                                
                             scope.logs = res.data;
                         }
                     }, function(error){
-                        console.log(error);
                     });
                 },
                 
@@ -85,7 +81,6 @@ angular.module('application')
                             });
                         }                        
                     }, function(){
-                        console.log('error');
                     });
                 },
 

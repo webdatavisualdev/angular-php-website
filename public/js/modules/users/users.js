@@ -27,14 +27,11 @@ angular.module('application')
             scope.selectedUser = {};
             scope.alert = 'Do you want to delete this user?';            
             scope.root = $rootScope.imageRoot;
-            //scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(2);
             scope.dtOptions = DTOptionsBuilder
                 .newOptions()                             
                 .withOption('order', [1, 'asc'])
                 .withOption('lengthMenu', [10, 25, 50, 100, 250, 500])                
                 .withPaginationType('full_numbers')
-                // .withBootstrap();
-                // .withDOM('pitrfl');
 
             scope.dtColumnDefs = [
                 DTColumnDefBuilder.newColumnDef(0),
@@ -53,7 +50,6 @@ angular.module('application')
                             scope.roles = res.data;                            
                         }                        
                     }, function(){
-                        console.log('error');
                     });
                 },
 
@@ -65,7 +61,6 @@ angular.module('application')
                             });                                                      
                         }                        
                     }, function(){
-                        console.log('error');
                     });
                 },
 
@@ -90,7 +85,6 @@ angular.module('application')
                             scope.users = res.data;
                         }
                     }, function(){
-                        console.log('error');
                     });
                 },                
 
@@ -109,7 +103,6 @@ angular.module('application')
                             scope.fn.refreshUser();
                         }                        
                     }, function(error){
-                        console.log(error);
                     });
                 },
 
@@ -132,7 +125,6 @@ angular.module('application')
                             scope.fn.refreshUser();
                         }                        
                     }, function(){
-                        console.log('error');
                     });
                 },
 
@@ -144,7 +136,6 @@ angular.module('application')
                             });
                         }                        
                     }, function(){
-                        console.log('error');
                     });
                 },
 

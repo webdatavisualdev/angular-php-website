@@ -162,11 +162,9 @@ ul{
 }
 .nwt3rt-ul{
 	height: 50px;
-	//border: 2px solid #ccc;
 }
 .nwt3rt-ul li{
 	float: left;
-	//padding: 0 20px;
 	width: 70px;
 	height: 50px;
 	padding-top: 8px;
@@ -218,18 +216,13 @@ ul{
     display: none; 
 }
 .nwt3riu-half-u{
-	//position: absolute;
-	//left: 10px;
-	//bottom: 0px;
 	width: 70px;
 	height: 35px;
 	border-bottom-left-radius: 40px;
-    //background: red;
     border-top-right-radius: 40px;
     display: inline-block;
     float: left;
 	border-right: 1px solid #ccc;
-	//margin:0 -35px 0 35px;
 }
 .nwt3riu-half-u-red{
 	background: red;
@@ -252,7 +245,6 @@ ul{
 	float: left;
 	height: 40px;
 	border-right: 1px solid #ccc;
-	//border-left: 1px solid #ccc;
 }
 .nwt3riu-half-u + .nwt3riu-empty{
 	border-left:none;

@@ -27,44 +27,6 @@ angular.module('application')
                 ls_comment: '', // Comment
             };
 
-            // platid
-            // ls_country 
-            // ls_priority
-            // ls_location
-            // clientid            
-            // logsourceid
-            // ls_2levelservicecontactconditions            
-            // ls_2levelservicecontactid            
-            // ls_accesspermission            
-            // ls_accessprocedure            
-            // ls_businessimpact            
-            // ls_comment           
-                       
-            // ls_dataver            
-            // ls_escalationcontactid            
-            // ls_fqdn            
-            // ls_ipv4            
-            // ls_itownid            
-            // ls_itsystemownerid            
-                        
-            // ls_logprort            
-            // ls_logprotocol            
-            // ls_logsformat            
-            // ls_mac            
-            // ls_moitortype            
-            // ls_monitorstatus            
-                        
-            // ls_sequence            
-            // ls_storedinformation            
-            // ls_systemname            
-            // ls_usage            
-            // partnerid            
-            // pl_description            
-            // pl_firmware            
-            // pl_name            
-            // pl_sequence            
-                        
-
             scope.filterConf ={
                 platform: [],
                 countries: [],
@@ -87,27 +49,22 @@ angular.module('application')
                             scope.filterConf.users = res.users;                            
                         }
                     }, function(){
-                        console.log('error');
                     });
                 },
 
                 addLog:function(){                    
                     LogsourcesService.addLog(scope.logData).then(function(res){                        
                         if(res.status){                                
-                            console.log(res);
                         }
                     }, function(error){
-                        console.log(error);
                     });
                 },
 
                 updateLog:function(){                    
                     LogsourcesService.updateLog(scope.logData, scope.selectedLog).then(function(res){                        
                         if(res.status){                                
-                            console.log(res);
                         }
                     }, function(error){
-                        console.log(error);
                     });
                 },
 

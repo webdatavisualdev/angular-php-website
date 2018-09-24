@@ -1,126 +1,124 @@
-<!-- top tiles -->
-          <div class="row">
-            <h3>Risk Indicator</h3>
-          </div>
-          <div class="row">
-            <div class="col-md-1">
-              <div class="form-group">
-                <label>Status</label>
-                <select class="form-control" ng-model="var.filter.rs_ind">
-                  <option value="all">All</option>
-                  <option value="1">Open</option>
-                  <option value="2">Triage</option>
-                  <option value="3">Escalated</option>
-                  <option value="4">Closed</option>
-                  <option value="5">Defered</option>
-                </select>
-              </div> 
-            </div>
-            <div class="col-md-1">
-              <label><div class="risk-ind ri-cri"></div> Critical</label><br>
-              <input type="checkbox" ng-model="var.filter.risk_status.critical">
-            </div>
-            <div class="col-md-1">
-              <label><div class="risk-ind ri-ser"></div> Serious</label><br>
-              <input type="checkbox" ng-model="var.filter.risk_status.serious">
-            </div>
-            <div class="col-md-1">
-              <label><div class="risk-ind ri-mod"></div> Moderate</label><br>
-              <input type="checkbox" ng-model="var.filter.risk_status.moderate">
-            </div>
-            <div class="col-md-1">
-              <label><div class="risk-ind ri-ins"></div> Insignificant</label><br>
-              <input type="checkbox" ng-model="var.filter.risk_status.insignificant">
-            </div>
-            <div class="col-md-1">
-              <label><div class="risk-ind ri-und"></div> Undefined</label><br>
-              <input type="checkbox" ng-model="var.filter.risk_status.undefined">
-            </div>
-            <div class="col-md-2">
-              <div class="form-group">
-                <div  ng-if="current_user.rolename != 'Client'">
-                  <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="all"> All
-                </div>
-                <div  ng-if="current_user.rolename != 'Client'">
-                  <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="client"> Client
-                </div>
-                <div  ng-if="current_user.rolename != 'Client'">
-                  <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="partner"> Partnerid
-                </div>
-                <br>
-                <select class="form-control" ng-model="var.filter.cp_no" ng-disabled="var.filter.client_partner=='all'">
-                  <option ng-repeat="l in fn.getClientPartner()">{{l}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-1">
-              <label>Page</label>
-              <select class="form-control" ng-model="var.page.page_no">
-                <option ng-repeat="p in fn.int2Array(1,fn.getTotalPage())">{{p}}</option>
-              </select>
-            </div>
-            <div class="col-md-1">
-              <label>Page Size</label>
-              <select class="form-control" ng-model="var.page.page_size" ng-change="var.page.page_no='1'">
-                <option>10</option>
-                <option>20</option>
-                <option>30</option>
-              </select>
-            </div>
-            <div class="col-md-1">
-              <label>Action</label>
-              <button class="btn btn-success" ng-click="fn.resetFilters()">Reset All</button>
-            </div>  
-            
-          </div>
-          
-          <!-- /top tiles -->
-          <hr>
+<div class="row">
+  <h3>Risk Indicator</h3>
+</div>
+<div class="row">
+  <div class="col-md-1">
+    <div class="form-group">
+      <label>Status</label>
+      <select class="form-control" ng-model="var.filter.rs_ind">
+        <option value="all">All</option>
+        <option value="1">Open</option>
+        <option value="2">Triage</option>
+        <option value="3">Escalated</option>
+        <option value="4">Closed</option>
+        <option value="5">Defered</option>
+      </select>
+    </div> 
+  </div>
+  <div class="col-md-1">
+    <label><div class="risk-ind ri-cri"></div> Critical</label><br>
+    <input type="checkbox" ng-model="var.filter.risk_status.critical">
+  </div>
+  <div class="col-md-1">
+    <label><div class="risk-ind ri-ser"></div> Serious</label><br>
+    <input type="checkbox" ng-model="var.filter.risk_status.serious">
+  </div>
+  <div class="col-md-1">
+    <label><div class="risk-ind ri-mod"></div> Moderate</label><br>
+    <input type="checkbox" ng-model="var.filter.risk_status.moderate">
+  </div>
+  <div class="col-md-1">
+    <label><div class="risk-ind ri-ins"></div> Insignificant</label><br>
+    <input type="checkbox" ng-model="var.filter.risk_status.insignificant">
+  </div>
+  <div class="col-md-1">
+    <label><div class="risk-ind ri-und"></div> Undefined</label><br>
+    <input type="checkbox" ng-model="var.filter.risk_status.undefined">
+  </div>
+  <div class="col-md-2">
+    <div class="form-group">
+      <div  ng-if="current_user.rolename != 'Client'">
+        <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="all"> All
+      </div>
+      <div  ng-if="current_user.rolename != 'Client'">
+        <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="client"> Client
+      </div>
+      <div  ng-if="current_user.rolename != 'Client'">
+        <input type="radio" name="select-type" ng-model="var.filter.client_partner" value="partner"> Partnerid
+      </div>
+      <br>
+      <select class="form-control" ng-model="var.filter.cp_no" ng-disabled="var.filter.client_partner=='all'">
+        <option ng-repeat="l in fn.getClientPartner()">{{l}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <label>Page</label>
+    <select class="form-control" ng-model="var.page.page_no">
+      <option ng-repeat="p in fn.int2Array(1,fn.getTotalPage())">{{p}}</option>
+    </select>
+  </div>
+  <div class="col-md-1">
+    <label>Page Size</label>
+    <select class="form-control" ng-model="var.page.page_size" ng-change="var.page.page_no='1'">
+      <option>10</option>
+      <option>20</option>
+      <option>30</option>
+    </select>
+  </div>
+  <div class="col-md-1">
+    <label>Action</label>
+    <button class="btn btn-success" ng-click="fn.resetFilters()">Reset All</button>
+  </div>  
+  
+</div>
 
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Status</th>
-                    <th>Risk level</th>
-                    <th>Alert name</th>
-                    <th>Asset value</th>
-                    <th>PlatID</th>
-                    <th>Name</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr ng-repeat="al in fn.getFilteredAlerts()|limitTo:fn.getPageSize():fn.getPageLimit()">
-                    <td>{{al.alarmid}}</td>
-                    <td>{{fn.getStatusName(al.al_incidentstatus)}}</td>
-                    <td><div class="risk-ind {{fn.getRiskLevel(al.al_risklevel,'class')}}"></div> {{al.al_risklevel}}</td>
-                    <td>{{al.al_name}}</td>
-                    <td>{{al.ls_priority}}</td>
-                    <td>{{al.PlatID}}</td>
-                    <td>{{al.client_name}}</td>
-                    <td><button class="btn btn-success" ng-click="fn.getDetails(al)">Details</button></td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-            </div>
+<hr>
 
-          </div>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Status</th>
+          <th>Risk level</th>
+          <th>Alert name</th>
+          <th>Asset value</th>
+          <th>PlatID</th>
+          <th>Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="al in fn.getFilteredAlerts()|limitTo:fn.getPageSize():fn.getPageLimit()">
+          <td>{{al.alarmid}}</td>
+          <td>{{fn.getStatusName(al.al_incidentstatus)}}</td>
+          <td><div class="risk-ind {{fn.getRiskLevel(al.al_risklevel,'class')}}"></div> {{al.al_risklevel}}</td>
+          <td>{{al.al_name}}</td>
+          <td>{{al.ls_priority}}</td>
+          <td>{{al.PlatID}}</td>
+          <td>{{al.client_name}}</td>
+          <td><button class="btn btn-success" ng-click="fn.getDetails(al)">Details</button></td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
 
-          <div class="pull-right" style="margin-right: 20px !important;">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  <ul class="pagination" style="margin-bottom: 40px !important; margin-top:10px !important;">
-                    <li><a href="javascript:void(0)" ng-click="fn.decPage()"><i class="fa fa-angle-left"></i></a></li>
-                    <li><a href="javascript:void(0)" ng-repeat="p in fn.getPagination(fn.getPageNo(),fn.getTotalPage())" ng-click="var.page.page_no=p+''" style="{{var.page.page_no==p+''?'font-weight:bold;':''}}">{{p}}</a></li>
-                    <li><a href="javascript:void(0)" ng-click="fn.incPage()"><i class="fa fa-angle-right"></i></a></li>
-                  </ul>
-                </div>
-            </div>
-          </div>
+</div>
 
-          
-          <div class="clearfix"></div>
+<div class="pull-right" style="margin-right: 20px !important;">
+  <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <ul class="pagination" style="margin-bottom: 40px !important; margin-top:10px !important;">
+          <li><a href="javascript:void(0)" ng-click="fn.decPage()"><i class="fa fa-angle-left"></i></a></li>
+          <li><a href="javascript:void(0)" ng-repeat="p in fn.getPagination(fn.getPageNo(),fn.getTotalPage())" ng-click="var.page.page_no=p+''" style="{{var.page.page_no==p+''?'font-weight:bold;':''}}">{{p}}</a></li>
+          <li><a href="javascript:void(0)" ng-click="fn.incPage()"><i class="fa fa-angle-right"></i></a></li>
+        </ul>
+      </div>
+  </div>
+</div>
+
+
+<div class="clearfix"></div>

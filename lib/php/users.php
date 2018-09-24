@@ -5,7 +5,6 @@
     header('Access-Control-Allow-Headers:Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
     error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);   
     
-    //getUsers();
     $tblName = 'tbl_users';
 
     if(isset($_REQUEST['type']) && !empty($_REQUEST['type'])){
@@ -32,37 +31,25 @@
 
         $uploadOk = 1;        
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-        // Check if image file is a actual image or fake image
         
-        // Check if file already exists
         if (file_exists($target_file)) {
-            //echo "Sorry, file already exists.";
             $uploadOk = 0;
         }        
-        // Allow certain file formats
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-            //echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             $uploadOk = 0;
         }
-        // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
-            //echo "Sorry, your file was not uploaded.";
-        // if everything is ok, try to upload file
         } else {
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-                //echo "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
                 return $target_file;
             } else {
-                //echo "Sorry, there was an error uploading your file.";
             }
         }
         return false;
     }
 
     function getUsers() {
-        //$sql="SELECT tbl_users.*, tbl_roles.rolename, tbl_clients.cl_name FROM tbl_users LEFT JOIN tbl_roles ON tbl_users.roleid = tbl_roles.roleid LEFT JOIN tbl_clients ON tbl_users.clientid = tbl_clients.clientid WHERE tbl_users.userid=".$uid;
         if($result = getJoinedRows('tbl_users', 'tbl_roles', 'roleid')){
-        //if($result = getRows('tbl_users')){
             $resp['status'] = true;
             $resp['data'] = $result->fetch_all(MYSQLI_ASSOC);            
         }
@@ -75,7 +62,6 @@
     function getUser($uid=0){
         if($result = getJoinedRows('tbl_users', 'tbl_roles', 'roleid', 'tbl_users.userid='.$uid)){        
             return $result->fetch_array(MYSQLI_ASSOC);
-            //return $result->fetch_all();            
         }
         else{
             return null;
